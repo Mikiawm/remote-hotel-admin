@@ -18,6 +18,7 @@ import { AccessLogService } from './services/access-log.service';
 import { AccessLogComponent } from './components/list-view/access-log/access-log.component';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { AccessLogListItemComponent } from './components/list-view/access-log/access-log-list-item/access-log-list-item.component';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { AccessLogListItemComponent } from './components/list-view/access-log/ac
     MatGridListModule,
     MatCardModule,
     MatMenuModule,
-    HttpClientModule
+    HttpClientModule,
+    FlexLayoutModule
 
   ],
   providers: [UsersService, RoomService, HotelService, AccessLogService],

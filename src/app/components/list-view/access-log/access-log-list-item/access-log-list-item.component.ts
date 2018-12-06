@@ -8,13 +8,14 @@ import { AccessLog } from 'src/app/models/access-log';
 })
 export class AccessLogListItemComponent implements OnInit {
   
-  @Input() accessLog: AccessLog;
+  @Input() accessLogData: AccessLog;
 
   constructor() {
-    console.log(this.accessLog);
    }
 
   ngOnInit() {
+    console.log(this.accessLogData);
+    console.log(this.accessLogData instanceof AccessLog);
   }
 
 }

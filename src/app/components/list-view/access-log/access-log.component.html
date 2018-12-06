@@ -1,3 +1,3 @@
-<div *ngFor= "let accessLog of accessLogs">
-  <app-access-log-list-item [accessLog] ></app-access-log-list-item>
+<div *ngFor= "let accessLog of accessLogs" fxLayout='column'>
+  <app-access-log-list-item [accessLogData]="accessLog" ></app-access-log-list-item>
 </div>
