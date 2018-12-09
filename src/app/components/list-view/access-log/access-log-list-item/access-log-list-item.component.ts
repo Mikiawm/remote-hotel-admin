@@ -7,11 +7,11 @@ import { AccessLog } from 'src/app/models/access-log';
   styleUrls: ['./access-log-list-item.component.scss']
 })
 export class AccessLogListItemComponent implements OnInit {
-  
+
   @Input() accessLogData: AccessLog;
 
   constructor() {
-   }
+  }
 
   ngOnInit() {
   }
