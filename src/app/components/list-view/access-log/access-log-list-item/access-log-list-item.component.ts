@@ -14,8 +14,5 @@ export class AccessLogListItemComponent implements OnInit {
    }
 
   ngOnInit() {
-    console.log(this.accessLogData);
-    console.log(this.accessLogData instanceof AccessLog);
   }
-
 }

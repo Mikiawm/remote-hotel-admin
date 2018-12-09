@@ -19,13 +19,18 @@ import { AccessLogComponent } from './components/list-view/access-log/access-log
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { AccessLogListItemComponent } from './components/list-view/access-log/access-log-list-item/access-log-list-item.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { LoginComponent } from './components/login/login.component';
+import { ProfilComponent } from './components/profil/profil.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     DashboardComponent,
     AccessLogComponent,
-    AccessLogListItemComponent
+    AccessLogListItemComponent,
+    LoginComponent,
+    ProfilComponent
   ],
   imports: [
     BrowserModule,
