@@ -8,7 +8,7 @@ import { LayoutModule } from '@angular/cdk/layout';
 import {
   MatToolbarModule, MatButtonModule, MatSidenavModule,
   MatIconModule, MatListModule, MatGridListModule,
-  MatCardModule, MatMenuModule
+  MatCardModule, MatMenuModule, MatFormFieldModule
 } from '@angular/material';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { UsersService } from './services/users.service';
@@ -25,6 +25,7 @@ import { HotelsComponent } from './components/dashboard/hotels/hotels.component'
 import { AccessLogsComponent } from './components/dashboard/access-logs/access-logs.component';
 import { CustomersComponent } from './components/dashboard/customers/customers.component';
 import { AccessLogService } from './services/access-log.service';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -42,6 +43,7 @@ import { AccessLogService } from './services/access-log.service';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    ReactiveFormsModule,
     BrowserAnimationsModule,
     LayoutModule,
     MatToolbarModule,
@@ -53,8 +55,8 @@ import { AccessLogService } from './services/access-log.service';
     MatCardModule,
     MatMenuModule,
     HttpClientModule,
-    FlexLayoutModule
-
+    FlexLayoutModule,
+    MatFormFieldModule
   ],
   providers: [UsersService, RoomService, HotelService, AccessLogService],
   bootstrap: [AppComponent]

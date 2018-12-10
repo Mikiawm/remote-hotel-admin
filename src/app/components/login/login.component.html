@@ -1,3 +1,31 @@
-<p>
-  login works!
-</p>
+<mat-card class="login-card">
+  <mat-card-title>
+    <mat-icon>account_circle</mat-icon>
+  </mat-card-title>
+  <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+    <mat-card-content>
+      <mat-form-field>
+        <input matInput formControlName="login">
+        <!-- <mat-error *ngIf="form.get('login').hasError('required')">
+            {{'LoginValidation' | translate}}
+          </mat-error> -->
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput  formControlName="password">
+        <!-- <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon> -->
+        <!-- <mat-error *ngIf="loginForm.get('password').hasError('required')">
+          {{PasswordValidation}}
+        </mat-error> -->
+      </mat-form-field>
+      <div class="formError">
+        <!-- <mat-error *ngIf="errorMessage != ''">
+            {{errorMessage | translate}}
+          </mat-error> -->
+      </div>
+    </mat-card-content>
+    <mat-card-footer fxLayout="column" fxLayoutAlign="space-around">
+      <button mat-raised-button color="primary" type="submit" ng-click="Register()">{{LogIn}}</button>
+      <button mat-stroked-button routerLink='/policies'>{{PrivacyStatement }}</button>
+    </mat-card-footer>
+  </form>
+</mat-card>
