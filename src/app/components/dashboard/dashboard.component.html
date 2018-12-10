@@ -1,6 +1,16 @@
 <div class="grid-container">
   <h1 class="mat-h1">Dashboard</h1>
-  <mat-card>
-    <app-access-logs></app-access-logs>
-  </mat-card>
+  <mat-grid-list cols="2" rowHeight="1:1">
+    <mat-grid-tile [colspan]="1" [rowspan]="1">
+      <app-customers></app-customers>
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]="1" [rowspan]="1">
+      <app-rooms></app-rooms>
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]="2" [rowspan]="1">
+      <mat-card>
+        <app-access-logs></app-access-logs>
+      </mat-card>
+    </mat-grid-tile>
+  </mat-grid-list>
 </div>
