@@ -89,7 +89,7 @@ export class AuthService {
     // if (!token) {
     //   return true;
     // }
-    return true;
+    return this.sessionData.isAuthneticated;
   }
 
   //   const date = this.getTokenExpirationDate(token);

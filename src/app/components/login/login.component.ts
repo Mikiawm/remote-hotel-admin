@@ -25,6 +25,8 @@ export class LoginComponent implements OnInit {
   }
 
   onLogin() {
-
+    console.log("On login");
+    this.authService.sessionData.isAuthneticated = true;
+    this.router.navigate(['/dashboard']);
   }
 }
