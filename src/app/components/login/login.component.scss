@@ -1,0 +1,28 @@
+.example-card {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    display: block;
+    width: 250px;
+    margin: 100px auto;
+    border: 1px solid #e0e0e0;
+}
+mat-card-header.mat-card-header {
+    width: 100%;
+}
+mat-card-content{
+    width: 100%;
+}
+button.mat-button{
+    background: firebrick;
+    width: 100%;
+}
+.mat-form-field{
+    width: -webkit-fill-available;
+}
+.mat-form-field-infix {
+    width: 100%;
+}
+div.mat-card-header-text {
+    margin: auto;
+}

@@ -8,7 +8,7 @@ import { LayoutModule } from '@angular/cdk/layout';
 import {
   MatToolbarModule, MatButtonModule, MatSidenavModule,
   MatIconModule, MatListModule, MatGridListModule,
-  MatCardModule, MatMenuModule, MatFormFieldModule
+  MatCardModule, MatMenuModule, MatFormFieldModule, MatInputModule
 } from '@angular/material';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { UsersService } from './services/users.service';
@@ -56,7 +56,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatMenuModule,
     HttpClientModule,
     FlexLayoutModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    MatInputModule
   ],
   providers: [UsersService, RoomService, HotelService, AccessLogService],
   bootstrap: [AppComponent]

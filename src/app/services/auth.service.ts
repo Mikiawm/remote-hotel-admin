@@ -21,7 +21,7 @@ export class AuthService {
   };
   // constructor(private configuration: ConfigurationService, private router: Router, private http: Http) { }
 
-  constructor(){
+  constructor() {
     console.log('auth');
   }
 
@@ -84,11 +84,13 @@ export class AuthService {
 
   // }
 
-  // isTokenExpired(token?: string): boolean {
-  //   if (!token) { token = this.getToken(); }
-  //   if (!token) {
-  //     return true;
-  //   }
+  isTokenExpired(token?: string): boolean {
+    // if (!token) { token = this.getToken(); }
+    // if (!token) {
+    //   return true;
+    // }
+    return true;
+  }
 
   //   const date = this.getTokenExpirationDate(token);
   //   if (date === undefined) {
