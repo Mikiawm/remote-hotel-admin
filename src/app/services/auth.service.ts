@@ -7,7 +7,7 @@ import { tap, map, shareReplay } from 'rxjs/operators';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { User } from '../models/user';
 import * as moment from 'moment';
-// import { jwt_decode } from 'jwt-decode';
+import * as jwt_decode from 'jwt-decode';
 
 export const TOKEN_NAME = 'jwt_token';
 
@@ -32,7 +32,7 @@ export class AuthService {
   };
   constructor(private http: HttpClient) {
     this.urlAddress = environment.apiUrl + this.accountEndpoint;
-    console.log('auth');
+
   }
   login(login: string, password: string) {
     const user = {
@@ -41,7 +41,7 @@ export class AuthService {
     };
     return this.http.post<any>(this.urlAddress + '/login', user)
       .pipe(map(res => {
-        console.log(res);
+        console.log(jwt_decode(res));
         // login successful if there's a jwt token in the response
         if (res) {
           // store user details and jwt token in local storage to keep user logged in between page refreshes
@@ -56,10 +56,38 @@ export class AuthService {
     localStorage.removeItem('currentUser');
   }
   isLoggedIn() {
-    if (localStorage.getItem('currentUser')) {
+    if (this.isTokenValid()) {
       // logged in so return true
       return true;
     }
     return false;
   }
+  getToken(): string {
+    return localStorage.getItem('currentUser');
+  }
+  isTokenValid(token?: string) {
+    if (!token) { token = this.getToken(); }
+    if (!token) {
+      return true;
+    }
+
+    const date = this.getTokenExpirationDate(token);
+    if (date === undefined) { return false; }
+    return (date.valueOf() > new Date().valueOf());
+  }
+  getTokenExpirationDate(token: string): Date {
+    const decoded = jwt_decode(token) as Token;
+
+    if (decoded.exp === undefined) { return null; }
+
+    const date = new Date(0);
+    date.setUTCSeconds(decoded.exp);
+    return date;
+  }
+}
+
+export class Token {
+  aud: string;
+  exp: number;
+  iss: string;
 }
