@@ -8,8 +8,9 @@ import { AuthService } from './services/auth.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+  private isLoggedIn: boolean;
   constructor(private authService: AuthService) {
-
+    // this.isLoggedIn = this.authService.isLoggedIn();
   }
   title = 'remote-hotel';
 }

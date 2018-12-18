@@ -26,6 +26,7 @@ import { AccessLogsComponent } from './components/dashboard/access-logs/access-l
 import { CustomersComponent } from './components/dashboard/customers/customers.component';
 import { AccessLogService } from './services/access-log.service';
 import { ReactiveFormsModule } from '@angular/forms';
+import { AuthGuard } from './guards/auth.guard';
 
 
 @NgModule({
@@ -59,7 +60,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatFormFieldModule,
     MatInputModule
   ],
-  providers: [UsersService, RoomService, HotelService, AccessLogService],
+  providers: [UsersService, RoomService, HotelService, AccessLogService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

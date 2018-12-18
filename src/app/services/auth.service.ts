@@ -30,7 +30,7 @@ export class AuthService {
       'Authorization': 'my-auth-token'
     })
   };
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private router: Router) {
     this.urlAddress = environment.apiUrl + this.accountEndpoint;
 
   }
@@ -54,6 +54,7 @@ export class AuthService {
   logout() {
     // remove user from local storage to log user out
     localStorage.removeItem('currentUser');
+    this.router.navigate(['/login']);
   }
   isLoggedIn() {
     if (this.isTokenValid()) {
@@ -68,7 +69,7 @@ export class AuthService {
   isTokenValid(token?: string) {
     if (!token) { token = this.getToken(); }
     if (!token) {
-      return true;
+      return false;
     }
 
     const date = this.getTokenExpirationDate(token);
