@@ -27,6 +27,7 @@ import { CustomersComponent } from './components/dashboard/customers/customers.c
 import { AccessLogService } from './services/access-log.service';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AuthGuard } from './guards/auth.guard';
+import { CreatorComponent } from './components/creator/creator.component';
 
 
 @NgModule({
@@ -39,7 +40,8 @@ import { AuthGuard } from './guards/auth.guard';
     RoomsComponent,
     HotelsComponent,
     AccessLogsComponent,
-    CustomersComponent
+    CustomersComponent,
+    CreatorComponent
   ],
   imports: [
     BrowserModule,
