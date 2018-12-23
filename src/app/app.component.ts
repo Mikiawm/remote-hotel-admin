@@ -17,6 +17,6 @@ export class AppComponent {
 const httpOptions = {
   headers: new HttpHeaders({
     'Content-Type': 'application/json',
-    'Authorization': 'my-auth-token'
+    'Authorization': 'Bearer'
   })
 };
