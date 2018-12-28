@@ -1,0 +1,14 @@
+<form [formGroup]="roomForm">
+  <mat-form-field>
+    <input type="text" matInput placeholder="Room number" formControlName="roomNumber">
+  </mat-form-field>
+  <mat-form-field>
+    <input type="text" matInput placeholder="Beds count" formControlName="roomBeds">
+  </mat-form-field>
+  <mat-form-field>
+    <input type="text" matInput placeholder="Room standard" formControlName="roomStandard">
+  </mat-form-field>
+</form>
+<button mat-button (click)="addRoom(hotel)" [disabled]="!roomForm.valid">
+  Save!
+</button>

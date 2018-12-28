@@ -1,10 +1,34 @@
-<mat-list>
-  <h3 mat-subheader>
-    <div fxFlex="35">HotelId</div>
-    <div fxFlex="30">HotelName</div>
-  </h3>
-  <mat-list-item *ngFor="let hotel of hotels">
-    <div>{{hotel.HotelId}}</div>
-    <div>{{Hotel.HotelName}}</div>
-  </mat-list-item>
-</mat-list>
+<mat-accordion>
+  <mat-expansion-panel *ngFor="let hotel of hotels">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        {{hotel.HotelName}}
+        {{hotel.HotelId}}
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <h1>Hotel rooms:</h1>
+    <div *ngFor="let room of hotel.Rooms">
+      <mat-divider></mat-divider>
+      <h3>Room number: {{room.RoomNumber}}</h3>
+      <h4>Beds: {{room.Beds}}</h4>
+      <h4>Standard: {{room.Standard}}</h4>
+    </div>
+    <app-add-room-form [hotelId]="hotel.HotelId"></app-add-room-form>
+  </mat-expansion-panel>
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Add Hotel
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <form [formGroup]="hotelForm">
+      <mat-form-field>
+        <input matInput placeholder="Hotel name" formControlName="hotelName">
+      </mat-form-field>
+    </form>
+
+    <button mat-button (click)="addHotel()">
+      Save!
+    </button>
+  </mat-expansion-panel>
+</mat-accordion>

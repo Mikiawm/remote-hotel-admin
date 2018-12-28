@@ -12,7 +12,7 @@ import { AuthService } from './auth.service';
 export class DataService<T> {
     urlAdress: string;
 
-    private httpOptions = {
+    protected httpOptions = {
         headers: new HttpHeaders({
             'Content-Type': 'application/json',
         })

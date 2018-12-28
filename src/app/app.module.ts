@@ -28,7 +28,9 @@ import { AccessLogService } from './services/access-log.service';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AuthGuard } from './guards/auth.guard';
 import { CreatorComponent } from './components/creator/creator.component';
-
+import {MatExpansionModule} from '@angular/material/expansion';
+import {MatDividerModule} from '@angular/material/divider';
+import { AddRoomFormComponent } from './components/creator/add-room-form/add-room-form.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +43,8 @@ import { CreatorComponent } from './components/creator/creator.component';
     HotelsComponent,
     AccessLogsComponent,
     CustomersComponent,
-    CreatorComponent
+    CreatorComponent,
+    AddRoomFormComponent
   ],
   imports: [
     BrowserModule,
@@ -60,7 +63,9 @@ import { CreatorComponent } from './components/creator/creator.component';
     HttpClientModule,
     FlexLayoutModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    MatExpansionModule,
+    MatDividerModule
   ],
   providers: [UsersService, RoomService, HotelService, AccessLogService, AuthGuard],
   bootstrap: [AppComponent]

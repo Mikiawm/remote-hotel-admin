@@ -3,6 +3,8 @@ import { HotelService } from 'src/app/services/hotel.service';
 import { Observable } from 'rxjs';
 import { Hotel } from 'src/app/models/hotel';
 import { catchError, map } from 'rxjs/operators';
+import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
+import { RoomService } from 'src/app/services/room.service';
 
 @Component({
   selector: 'app-creator',
@@ -14,8 +16,15 @@ export class CreatorComponent implements OnInit {
   singleHotels$: Observable<Hotel>;
   handleError: any;
   hotels: Hotel[];
-  constructor(private hotelService: HotelService) {
+  hotelForm: FormGroup;
+
+  constructor(private hotelService: HotelService, private fb: FormBuilder,
+    private roomService: RoomService) {
     this.getAllHotels().subscribe();
+    this.hotelForm = this.fb.group({
+      hotelName: new FormControl('', Validators.required)
+    });
+
   }
 
   ngOnInit() {
@@ -31,4 +40,12 @@ export class CreatorComponent implements OnInit {
     );
   }
 
+
+  addHotel() {
+    this.hotelService.addHotelByName(this.hotelForm.get('hotelName').value).subscribe(
+      x => {
+        this.getAllHotels().subscribe();
+      }
+    );
+  }
 }

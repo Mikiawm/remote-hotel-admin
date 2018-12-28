@@ -9,6 +9,14 @@ import { AuthService } from './auth.service';
 })
 export class HotelService extends DataService<Hotel> {
   constructor(public httpClient: HttpClient, public authService: AuthService) {
-    super('/hotel', httpClient, authService);
-   }
+    super('/hotels', httpClient, authService);
+  }
+
+  addHotelByName(hotelName: string): Observable<boolean> {
+    const hotel = {
+      HotelName: hotelName
+    };
+    console.log(hotelName);
+    return this.httpClient.post<boolean>(this.urlAdress, hotel, this.httpOptions);
+  }
 }
