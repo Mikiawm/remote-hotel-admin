@@ -4,6 +4,14 @@
 <mat-toolbar color="warn" *ngIf="authService.isLoggedIn()">
     <mat-toolbar-row>
         <h1 mat-subheader>Remote hotel</h1>
+        <mat-form-field>
+            <mat-select [(value)]="selected">
+              <mat-option>None</mat-option>
+              <mat-option value="option1">Option 1</mat-option>
+              <mat-option value="option2">Option 2</mat-option>
+              <mat-option value="option3">Option 3</mat-option>
+            </mat-select>
+          </mat-form-field>
         <span class="spacer"></span>
         <mat-icon class="logout" (click)="authService.logout()">exit_to_app</mat-icon>
     </mat-toolbar-row>

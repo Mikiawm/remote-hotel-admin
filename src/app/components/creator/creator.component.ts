@@ -20,7 +20,7 @@ export class CreatorComponent implements OnInit {
 
   constructor(private hotelService: HotelService, private fb: FormBuilder,
     private roomService: RoomService) {
-    this.getAllHotels().subscribe();
+    this.getAllHotelsWithData().subscribe();
     this.hotelForm = this.fb.group({
       hotelName: new FormControl('', Validators.required)
     });
@@ -30,7 +30,7 @@ export class CreatorComponent implements OnInit {
   ngOnInit() {
   }
 
-  getAllHotels(): Observable<Hotel[]> {
+  getAllHotelsWithData(): Observable<Hotel[]> {
     return this.hotelService.getAll().pipe(
       map(res => {
         this.hotels = res;
@@ -44,7 +44,7 @@ export class CreatorComponent implements OnInit {
   addHotel() {
     this.hotelService.addHotelByName(this.hotelForm.get('hotelName').value).subscribe(
       x => {
-        this.getAllHotels().subscribe();
+        this.getAllHotelsWithData().subscribe();
       }
     );
   }

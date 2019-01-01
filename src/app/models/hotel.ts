@@ -1,7 +1,7 @@
-import { Room } from './room';
+import { Floor } from './floor';
 
 export class Hotel {
     hotelId: number;
     hotelName: string;
-    rooms: Room[];
+    floors: Floor[];
 }

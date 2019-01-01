@@ -29,6 +29,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { AuthGuard } from './guards/auth.guard';
 import { CreatorComponent } from './components/creator/creator.component';
 import {MatExpansionModule} from '@angular/material/expansion';
+import {MatSelectModule} from '@angular/material/select';
 import {MatDividerModule} from '@angular/material/divider';
 import { AddRoomFormComponent } from './components/creator/add-room-form/add-room-form.component';
 
@@ -65,7 +66,8 @@ import { AddRoomFormComponent } from './components/creator/add-room-form/add-roo
     MatFormFieldModule,
     MatInputModule,
     MatExpansionModule,
-    MatDividerModule
+    MatDividerModule,
+    MatSelectModule
   ],
   providers: [UsersService, RoomService, HotelService, AccessLogService, AuthGuard],
   bootstrap: [AppComponent]
