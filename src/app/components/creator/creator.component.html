@@ -1,33 +1,32 @@
 <mat-accordion>
-  <mat-expansion-panel *ngFor="let hotel of hotels">
+  <mat-expansion-panel *ngFor="let floor of floors">
     <mat-expansion-panel-header>
       <mat-panel-title>
-        {{hotel.HotelName}}
-        {{hotel.HotelId}}
+        Level: {{floor.Level}}
       </mat-panel-title>
     </mat-expansion-panel-header>
     <h1>Hotel rooms:</h1>
-    <div *ngFor="let room of hotel.Rooms">
+    <div *ngFor="let room of floor.Rooms">
       <mat-divider></mat-divider>
       <h3>Room number: {{room.RoomNumber}}</h3>
       <h4>Beds: {{room.Beds}}</h4>
       <h4>Standard: {{room.Standard}}</h4>
     </div>
-    <app-add-room-form [hotelId]="hotel.HotelId"></app-add-room-form>
+    <mat-divider></mat-divider>
+    <app-add-room-form [floorId]="floor.FloorId"></app-add-room-form>
   </mat-expansion-panel>
   <mat-expansion-panel>
     <mat-expansion-panel-header>
       <mat-panel-title>
-        Add Hotel
+        Add Floor
       </mat-panel-title>
     </mat-expansion-panel-header>
-    <form [formGroup]="hotelForm">
+    <form [formGroup]="floorForm">
       <mat-form-field>
-        <input matInput placeholder="Hotel name" formControlName="hotelName">
+        <input matInput placeholder="Floor name" formControlName="floorForm">
       </mat-form-field>
     </form>
-
-    <button mat-button (click)="addHotel()">
+    <button mat-button (click)="addFloor()">
       Save!
     </button>
   </mat-expansion-panel>

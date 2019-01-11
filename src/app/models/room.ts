@@ -1,8 +1,9 @@
 export class Room {
-    roomId?: number;
-    roomNumber: string;
-    status: number;
-    standard: number;
-    beds: number;
-    hotelId: number;
+    RoomId?: number;
+    RoomNumber: string;
+    Standard: number;
+    Beds: number;
+    HotelId: number;
+    SingleBeds?: number;
+    DoubleBeds: number;
 }

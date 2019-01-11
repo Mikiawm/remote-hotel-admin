@@ -1,0 +1,8 @@
+<mat-form-field>
+    <!--  -->
+  <mat-select [(value)]="actualHotelName">
+      <mat-option *ngFor="let hotel of hotelsList | async" [value]="hotel.HotelName">
+          {{hotel.HotelName}}
+        </mat-option>
+  </mat-select>
+</mat-form-field>

@@ -1,10 +1,28 @@
-<mat-list >
-  <h3 mat-subheader>Access logs</h3>
-  <mat-list-item *ngFor="let accessLog of accessLogs">
-    <div fxFlex="35">{{accessLog.LogId}}</div>
-    <div fxFlex="30">{{accessLog.CreateDate | date: 'short'}}</div>
-    <div fxFlex="30">{{accessLog.Status}}</div>
-    <div fxFlex="25">{{accessLog.Info}}</div>
-    <div fxFlex="10">{{accessLog.PasswordHash}}</div>
-  </mat-list-item>
-</mat-list>
+<div fxLayout="row">
+    <div *ngFor="let column of displayedColumn" fxFlex="20">
+      {{column}}
+    </div>
+  </div>
+  <div fxLayout="column">
+    <div>
+      <div *ngFor="let accessLog of accessLogs">
+        <div fxLayout="row">
+          <div fxFlex="20">
+            {{accessLog.LogId}}
+          </div>
+          <div fxFlex="20">
+            {{accessLog.CreatedDate}}
+          </div>
+          <div fxFlex="20">
+            {{accessLog.Status}}
+          </div>
+          <div fxFlex="20">
+            {{accessLog.Info}}
+          </div>
+          <div fxFlex="20">
+            {{accessLog.PasswordHash}}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { ConfigurationService } from './configuration.service';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { tap, map, shareReplay } from 'rxjs/operators';

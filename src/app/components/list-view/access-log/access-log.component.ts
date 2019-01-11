@@ -14,11 +14,9 @@ export class AccessLogComponent implements OnInit {
   singleAccessLog$: Observable<AccessLog>;
   handleError: any;
   accessLogs: AccessLog[];
+  displayedColumn = ['LogId', 'CreatedDate', 'Status', 'Info', 'PasswordHash'];
   constructor(private accessLogService: AccessLogService) {
 
-    // console.log(this.accessLogService.getAll().subscribe(accessLogs => this.accessLogs = accessLogs));
-
-    // console.log(this.accessLogs);
 
     this.getAccessLogs().subscribe();
   }

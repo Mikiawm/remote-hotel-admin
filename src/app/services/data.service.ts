@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { ConfigurationService } from './configuration.service';
+
 import { environment } from 'src/environments/environment';
 import { map } from 'rxjs/internal/operators/map';
 import { AuthService } from './auth.service';

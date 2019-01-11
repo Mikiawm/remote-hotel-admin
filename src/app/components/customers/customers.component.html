@@ -1,0 +1,10 @@
+<mat-list >
+  <h3 mat-subheader>Customers</h3>
+  <mat-list-item *ngFor="let customer of customers">
+    <div fxFlex="35">{{customer}}</div>
+    <!-- <div fxFlex="30">{{accessLog.CreateDate | date: 'short'}}</div>
+    <div fxFlex="30">{{accessLog.Status}}</div>
+    <div fxFlex="25">{{accessLog.Info}}</div>
+    <div fxFlex="10">{{accessLog.PasswordHash}}</div> -->
+  </mat-list-item>
+</mat-list>

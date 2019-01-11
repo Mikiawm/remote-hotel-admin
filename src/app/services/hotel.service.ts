@@ -4,6 +4,7 @@ import { DataService } from './data.service';
 import { HttpClient } from '@angular/common/http';
 import { Hotel } from '../models/hotel';
 import { AuthService } from './auth.service';
+import { Floor } from '../models/floor';
 interface HotelServiceData {
   actualHotel: Hotel;
   hotelsList: Hotel[];
@@ -20,16 +21,16 @@ export class HotelService extends DataService<Hotel> {
   constructor(public httpClient: HttpClient, public authService: AuthService) {
     super('/hotels', httpClient, authService);
   }
-  changeActualHotel(hotel: Hotel): any {
-    this.sessionData.actualHotel = hotel;
+  changeActualHotel(hotel: string): any {
+    this.sessionData.actualHotel = this.sessionData.hotelsList.find(x => x.HotelName === hotel);
   }
   setSessionData(hotels: Hotel[]): any {
-    console.log(hotels);
-    console.log(this.sessionData);
     this.sessionData.hotelsList = hotels;
-    console.log(this.sessionData);
     this.sessionData.actualHotel = hotels[0];
+  }
+  getActualHotelId(): number {
     console.log(this.sessionData);
+    return this.sessionData.actualHotel.HotelId;
   }
   addHotelByName(hotelName: string): Observable<boolean> {
     const hotel = {
@@ -39,7 +40,12 @@ export class HotelService extends DataService<Hotel> {
     return this.httpClient.post<boolean>(this.urlAdress, hotel, this.httpOptions);
   }
   getHotels() {
-    // console.log(this.httpClient.get<Hotel[]>(this.urlAdress, this.httpOptions));
     return this.httpClient.get<Hotel[]>(this.urlAdress, this.httpOptions);
+  }
+  getHotelData() {
+    console.log(this.sessionData);
+    const hotelId = this.sessionData.actualHotel.HotelId;
+    // console.log(this.httpClient.get<Hotel[]>(this.urlAdress, this.httpOptions));
+    return this.httpClient.get<Floor[]>(this.urlAdress + '/hotelData/' + hotelId, this.httpOptions);
   }
 }

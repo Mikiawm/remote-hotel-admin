@@ -10,7 +10,7 @@ import { Room } from 'src/app/models/room';
   styleUrls: ['./add-room-form.component.scss']
 })
 export class AddRoomFormComponent implements OnInit, OnChanges {
-  @Input() hotelId: string;
+  @Input() floorId: string;
   roomForm: FormGroup;
   constructor(private fb: FormBuilder, private roomService: RoomService) { }
 
@@ -30,17 +30,17 @@ export class AddRoomFormComponent implements OnInit, OnChanges {
       console.log(val);
     });
   }
-  addRoom() {
-    const room: Room = {
-      roomNumber: this.roomForm.get('roomNumber').value,
-      status: 0,
-      standard: this.roomForm.get('roomStandard').value,
-      beds: this.roomForm.get('roomBeds').value,
-      hotelId: +this.hotelId
-    };
-    console.log(room);
-    this.roomService.add(room).subscribe(val => {
-      console.log(val);
-    });
-  }
+  // addRoom() {
+  //   const room: Room = {
+  //     RoomNumber: this.roomForm.get('roomNumber').value,
+  //     Status: 0,
+  //     Standard: this.roomForm.get('roomStandard').value,
+  //     Beds: this.roomForm.get('roomBeds').value,
+  //     HotelId: +this.floorId
+  //   };
+  //   console.log(room);
+  //   this.roomService.add(room).subscribe(val => {
+  //     console.log(val);
+  //   });
+  // }
 }

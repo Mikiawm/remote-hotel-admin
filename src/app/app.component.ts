@@ -10,31 +10,13 @@ import { Hotel } from './models/hotel';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit, OnChanges {
+export class AppComponent implements OnInit {
 
-  actualHotel: Hotel;
-  hotelsList: Hotel[];
   private isLoggedIn: boolean;
-  constructor(private authService: AuthService, private hotelService: HotelService) {
+  constructor(private authService: AuthService) {
   }
   title = 'remote-hotel';
   ngOnInit(): void {
-    this.getHotelsList().subscribe();
   }
-  ngOnChanges() {
-    this.getHotelsList().subscribe();
-  }
-  getHotelsList(): any {
-    return this.hotelService.getHotels().pipe(
-      map(res => {
-        this.hotelService.setSessionData(res as Hotel[]);
-        this.actualHotel = this.hotelService.sessionData.actualHotel;
-        this.hotelsList = this.hotelService.sessionData.hotelsList;
-        return res;
-      })
-    );
-  }
-  changeActualHotel(): any {
-    this.hotelService.changeActualHotel(this.actualHotel);
-  }
+
 }

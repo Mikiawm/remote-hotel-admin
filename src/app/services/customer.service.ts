@@ -10,6 +10,6 @@ import { AuthService } from './auth.service';
 export class CustomerService extends DataService<Customer> {
   private accessLogEndPoint = '/accessLog';
   constructor(public httpClient: HttpClient, public authService: AuthService) {
-    super('/accessLog', httpClient, authService);
+    super('/customers ', httpClient, authService);
   }
 }

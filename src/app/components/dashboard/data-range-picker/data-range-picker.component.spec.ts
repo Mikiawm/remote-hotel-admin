@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ProfilComponent } from './profil.component';
+import { DataRangePickerComponent } from './data-range-picker.component';
 
-describe('ProfilComponent', () => {
-  let component: ProfilComponent;
-  let fixture: ComponentFixture<ProfilComponent>;
+describe('DataRangePickerComponent', () => {
+  let component: DataRangePickerComponent;
+  let fixture: ComponentFixture<DataRangePickerComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ProfilComponent ]
+      declarations: [ DataRangePickerComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ProfilComponent);
+    fixture = TestBed.createComponent(DataRangePickerComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

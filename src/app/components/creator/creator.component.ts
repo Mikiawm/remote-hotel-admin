@@ -5,6 +5,7 @@ import { Hotel } from 'src/app/models/hotel';
 import { catchError, map } from 'rxjs/operators';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 import { RoomService } from 'src/app/services/room.service';
+import { Floor } from 'src/app/models/floor';
 
 @Component({
   selector: 'app-creator',
@@ -16,13 +17,14 @@ export class CreatorComponent implements OnInit {
   singleHotels$: Observable<Hotel>;
   handleError: any;
   hotels: Hotel[];
-  hotelForm: FormGroup;
+  floors: Floor[];
+  floorForm: FormGroup;
 
   constructor(private hotelService: HotelService, private fb: FormBuilder,
     private roomService: RoomService) {
-    this.getAllHotelsWithData().subscribe();
-    this.hotelForm = this.fb.group({
-      hotelName: new FormControl('', Validators.required)
+    this.getHotelData().subscribe();
+    this.floorForm = this.fb.group({
+      level: new FormControl('', Validators.required)
     });
 
   }
@@ -30,10 +32,11 @@ export class CreatorComponent implements OnInit {
   ngOnInit() {
   }
 
-  getAllHotelsWithData(): Observable<Hotel[]> {
-    return this.hotelService.getAll().pipe(
+  getHotelData(): Observable<Floor[]> {
+    return this.hotelService.getHotelData().pipe(
       map(res => {
-        this.hotels = res;
+        this.floors = res;
+        console.log(this.floors);
         return res;
       }),
       catchError(this.handleError)
@@ -41,11 +44,13 @@ export class CreatorComponent implements OnInit {
   }
 
 
-  addHotel() {
-    this.hotelService.addHotelByName(this.hotelForm.get('hotelName').value).subscribe(
-      x => {
-        this.getAllHotelsWithData().subscribe();
-      }
-    );
-  }
+  // addFloor() {
+  //   const room = new Floor();
+  //   floor.Level = this.floorForm.get('floorLevel').value;
+  //   this.roomService.add(room).subscribe(
+  //     x => {
+  //       this.getHotelData().subscribe();
+  //     }
+  //   );
+  // }
 }
