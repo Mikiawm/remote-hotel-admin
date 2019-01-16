@@ -1,11 +1,11 @@
-<div fxLayout="row" fxLayoutAlign="center start" style="background-color:salmon;">
+<div fxLayout="row" fxLayoutAlign="center start" style="background-color:salmon;" [formGroup]="reservationForm">
     <mat-form-field class="example-full-width">
-        <input matInput [min]="minDate" [max]="maxDate" [matDatepicker]="picker" placeholder="Choose a date">
+        <input matInput [min]="minDate" [max]="maxDate" [matDatepicker]="picker" placeholder="Choose a date" formControlName="dateFrom">
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
     </mat-form-field>
     <mat-form-field class="example-full-width">
-        <input matInput [min]="minDate" [max]="maxDate" [matDatepicker]="picker1" placeholder="Choose a date">
+        <input matInput [min]="minDate" [max]="maxDate" [matDatepicker]="picker1" placeholder="Choose a date" formControlName="dateTo">
         <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
         <mat-datepicker #picker1></mat-datepicker>
     </mat-form-field>

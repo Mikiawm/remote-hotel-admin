@@ -1,12 +1,11 @@
-import { Rental } from './rental';
+import { Reservation } from './reservation';
 
 export class Customer {
-    customerId: number;
+    customerId?: number;
     firstName: string;
     lastName: string;
-    password: string;
     email: string;
     phoneNumber: string;
-    createDate: Date;
-    rentals: Rental[];
+    createDate?: Date;
+    rentals?: Reservation[];
 }

@@ -1,33 +1,48 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterContentInit } from '@angular/core';
 import { map } from 'rxjs/operators';
 import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
+import { FormGroup, FormBuilder, FormArray } from '@angular/forms';
+import { FreeRoomsComponent } from './free-rooms/free-rooms.component';
+import { DataRangePickerComponent } from './data-range-picker/data-range-picker.component';
+import { CreateReservationComponent } from './create-reservation/create-reservation.component';
+import { MatDialog } from '@angular/material';
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss'],
 })
-export class DashboardComponent {
-  /** Based on the screen size, switch from standard to one column per row */
-  cards = this.breakpointObserver.observe(Breakpoints.Handset).pipe(
-    map(({ matches }) => {
-      if (matches) {
-        return [
-          { title: 'Access Logs', cols: 2, rows: 1 },
-          { title: 'Rooms', cols: 2, rows: 1 },
-          { title: 'Hotels', cols: 2, rows: 1 },
-          { title: 'Users', cols: 2, rows: 1 }
-        ];
-      }
+export class DashboardComponent implements OnInit, AfterContentInit {
+  @ViewChild(FreeRoomsComponent) freeRoomsView: FreeRoomsComponent;
+  @ViewChild(DataRangePickerComponent) dateRangePicker: DataRangePickerComponent;
+  ngOnInit(): void {
 
-      return [
-        { title: 'Access Logs', cols: 2, rows: 1 },
-        { title: 'Rooms', cols: 2, rows: 1 },
-        { title: 'Hotels', cols: 1, rows: 1 },
-        { title: 'Users', cols: 1, rows: 1 }
-      ];
-    })
-  );
+  }
 
-  constructor(private breakpointObserver: BreakpointObserver) {}
+  ngAfterContentInit(): void {
+    this.getFreeRooms();
+  }
+  private getFreeRooms() {
+    this.dateRangePicker.reservationForm.valueChanges.subscribe(changes => {
+      this.freeRoomsView.getFreeRooms(changes).subscribe();
+    });
+  }
+
+  initReservation() {
+    const data = {
+      dates: this.dateRangePicker.reservationForm.value,
+      room: this.freeRoomsView.markedRoom
+    };
+
+    const dialogRef = this.dialog.open(CreateReservationComponent, {
+      height: '400px',
+      width: '600px',
+      data: data,
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      this.getFreeRooms();
+    });
+  }
+  constructor(public dialog: MatDialog) { }
+
 }

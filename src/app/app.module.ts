@@ -36,6 +36,8 @@ import { AddEditRoomComponent } from './components/rooms/add-edit-room/add-edit-
 import { CustomersComponent } from './components/customers/customers.component';
 import { DataRangePickerComponent } from './components/dashboard/data-range-picker/data-range-picker.component';
 import { MatDatepickerModule } from '@angular/material/datepicker';
+import { FreeRoomsComponent } from './components/dashboard/free-rooms/free-rooms.component';
+import { CreateReservationComponent } from './components/dashboard/create-reservation/create-reservation.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -49,7 +51,9 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
     HotelSelectorComponent,
     ReservationComponent,
     AddEditRoomComponent,
-    DataRangePickerComponent
+    DataRangePickerComponent,
+    FreeRoomsComponent,
+    CreateReservationComponent
   ],
   imports: [
     BrowserModule,
@@ -77,7 +81,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
     MatDatepickerModule,
     MatNativeDateModule
   ],
-  entryComponents: [AddEditRoomComponent],
+  entryComponents: [AddEditRoomComponent, CreateReservationComponent],
   providers: [UsersService, { provide: MAT_DIALOG_DATA, useValue: {} },
     ReservationService, RoomService, MatDatepickerModule, HotelService, AccessLogService, AuthGuard],
   bootstrap: [AppComponent]

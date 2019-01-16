@@ -1,5 +1,5 @@
-export class Rental {
-    RentalId: number;
+export class Reservation {
+    ReservationId: number;
     CustomerId: number;
     RoomId: number;
     RoomKey: string;
