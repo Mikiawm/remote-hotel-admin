@@ -12,17 +12,19 @@ import { map } from 'rxjs/operators';
 export class CustomersComponent implements OnInit {
 
   customers: Customer[];
+  displayedColumn: string[] = ['CustomerId', 'FirstName', 'LastName', 'Email', 'PhoneNumber', 'CreatedDate'];
 
   constructor(private customerService: CustomerService) { }
 
   ngOnInit() {
+    this.getCustomers().subscribe();
   }
 
   getCustomers(): Observable<Customer[]> {
     return this.customerService.getAll().pipe(
       map(res => {
         console.log(res);
-        this.customers = res;
+        this.customers = res as Customer[];
         return res;
       })
     );

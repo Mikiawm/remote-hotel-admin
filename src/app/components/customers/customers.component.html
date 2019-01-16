@@ -1,10 +1,18 @@
-<mat-list >
-  <h3 mat-subheader>Customers</h3>
-  <mat-list-item *ngFor="let customer of customers">
-    <div fxFlex="35">{{customer}}</div>
-    <!-- <div fxFlex="30">{{accessLog.CreateDate | date: 'short'}}</div>
-    <div fxFlex="30">{{accessLog.Status}}</div>
-    <div fxFlex="25">{{accessLog.Info}}</div>
-    <div fxFlex="10">{{accessLog.PasswordHash}}</div> -->
-  </mat-list-item>
-</mat-list>
+<h3 mat-subheader>Customers</h3>
+<div fxLayout="row">
+  <div *ngFor="let column of displayedColumn" fxFlex="16">
+    {{column}}
+  </div>
+</div>
+<div fxLayout="column">
+  <div *ngFor="let customer of customers">
+    <div fxLayout="row">
+      <div fxFlex="16">{{customer.CustomerId}}</div>
+      <div fxFlex="16">{{customer.FirstName}}</div>
+      <div fxFlex="16">{{customer.LastName}}</div>
+      <div fxFlex="16">{{customer.Email}}</div>
+      <div fxFlex="16">{{customer.PhoneNumber}}</div>
+      <div fxFlex="20">{{customer.CreatedDate | date: 'short'}}</div>
+    </div>
+  </div>
+</div>

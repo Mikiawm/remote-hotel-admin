@@ -32,10 +32,10 @@ export class CreateReservationComponent implements OnInit {
     console.log(this.customerForm.value.firstName);
     const newCustomer = new Customer();
 
-    newCustomer.firstName = this.customerForm.value.firstName;
-    newCustomer.lastName = this.customerForm.value.lastName;
-    newCustomer.phoneNumber = this.customerForm.value.phoneNumber;
-    newCustomer.email = this.customerForm.value.email;
+    newCustomer.FirstName = this.customerForm.value.firstName;
+    newCustomer.LastName = this.customerForm.value.lastName;
+    newCustomer.PhoneNumber = this.customerForm.value.phoneNumber;
+    newCustomer.Email = this.customerForm.value.email;
     this.customerService.add(newCustomer).subscribe();
     // this.reservationService.createNewReservation()
     console.log(this.customerForm.valid);
