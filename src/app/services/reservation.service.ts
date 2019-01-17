@@ -12,7 +12,7 @@ export class ReservationService extends DataService<Reservation> {
   constructor(public httpClient: HttpClient, public authService: AuthService) {
     super('/reservations', httpClient, authService);
   }
-  createNewReservation(newReservation: Reservation){
+  createNewReservation(newReservation: Reservation) {
     this.httpClient.post(this.urlAdress, newReservation, this.httpOptions);
   }
 }

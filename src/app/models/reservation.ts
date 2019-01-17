@@ -4,5 +4,6 @@ export class Reservation {
     RoomId: number;
     RoomKey: string;
     CreateDateTime: Date;
-    ExpiredDateTime: Date;
+    DateFrom: Date;
+    DateTo: Date;
 }

@@ -36,8 +36,9 @@ export class DataService<T> {
     getSingle(id: number): Observable<T> {
         return this.httpClient.get<T>(this.urlAdress, this.httpOptions);
     }
-    add(item: T): Observable<T> {
-        return this.httpClient.post<T>(this.urlAdress, item, this.httpOptions);
+    add(item: T): Observable<number> {
+        console.log(item);
+        return this.httpClient.post<number>(this.urlAdress, item, this.httpOptions);
     }
     update(id: number, itemToUpdate: T): Observable<T> {
         return this.httpClient.put<T>(this.urlAdress, itemToUpdate, this.httpOptions);
