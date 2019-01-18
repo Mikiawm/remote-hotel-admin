@@ -6,6 +6,7 @@ import { FreeRoomsComponent } from './free-rooms/free-rooms.component';
 import { DataRangePickerComponent } from './data-range-picker/data-range-picker.component';
 import { CreateReservationComponent } from './create-reservation/create-reservation.component';
 import { MatDialog } from '@angular/material';
+import { ReservationsComponent } from './reservations/reservations.component';
 
 @Component({
   selector: 'app-dashboard',
@@ -15,6 +16,7 @@ import { MatDialog } from '@angular/material';
 export class DashboardComponent implements OnInit, AfterContentInit {
   @ViewChild(FreeRoomsComponent) freeRoomsView: FreeRoomsComponent;
   @ViewChild(DataRangePickerComponent) dateRangePicker: DataRangePickerComponent;
+  @ViewChild(ReservationsComponent) reservationsComponent: ReservationsComponent;
   ngOnInit(): void {
 
   }
@@ -26,6 +28,9 @@ export class DashboardComponent implements OnInit, AfterContentInit {
     this.dateRangePicker.reservationForm.valueChanges.subscribe(changes => {
       this.freeRoomsView.getFreeRooms(changes).subscribe();
     });
+  }
+  private getReservations(){
+    this.reservationsComponent.getAllReservations();
   }
 
   initReservation() {
@@ -40,6 +45,7 @@ export class DashboardComponent implements OnInit, AfterContentInit {
       data: data,
     });
     dialogRef.afterClosed().subscribe(result => {
+      this.getReservations();
       this.getFreeRooms();
     });
   }

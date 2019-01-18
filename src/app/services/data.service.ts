@@ -22,7 +22,6 @@ export class DataService<T> {
     ) {
         this.urlAdress = environment.apiUrl + this.endpoint;
         const token = this.authService.getToken();
-        console.log(token);
         if (token) {
             this.httpOptions.headers =  new HttpHeaders({
                 'Content-Type': 'application/json',
@@ -31,13 +30,14 @@ export class DataService<T> {
         }
     }
     getAll(): Observable<T[]> {
+        console.log(this.urlAdress);
         return this.httpClient.get<T[]>(this.urlAdress, this.httpOptions);
     }
     getSingle(id: number): Observable<T> {
         return this.httpClient.get<T>(this.urlAdress, this.httpOptions);
     }
     add(item: T): Observable<number> {
-        console.log(item);
+        console.log(this.urlAdress);
         return this.httpClient.post<number>(this.urlAdress, item, this.httpOptions);
     }
     update(id: number, itemToUpdate: T): Observable<T> {

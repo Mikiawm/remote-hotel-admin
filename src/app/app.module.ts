@@ -38,6 +38,7 @@ import { DataRangePickerComponent } from './components/dashboard/data-range-pick
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { FreeRoomsComponent } from './components/dashboard/free-rooms/free-rooms.component';
 import { CreateReservationComponent } from './components/dashboard/create-reservation/create-reservation.component';
+import { ReservationsComponent } from './components/dashboard/reservations/reservations.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -53,7 +54,8 @@ import { CreateReservationComponent } from './components/dashboard/create-reserv
     AddEditRoomComponent,
     DataRangePickerComponent,
     FreeRoomsComponent,
-    CreateReservationComponent
+    CreateReservationComponent,
+    ReservationsComponent
   ],
   imports: [
     BrowserModule,

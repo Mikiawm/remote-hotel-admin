@@ -6,13 +6,13 @@
     </mat-grid-tile>
     <mat-grid-tile [colspan]="1" [rowspan]="1">
       <div fxLayout="column" fxFlex="auto" fxFill>
-          <app-data-range-picker></app-data-range-picker>
-          <app-free-rooms></app-free-rooms>
-
-          <button mat-button (click)="initReservation()" >Reserve</button>
+        <app-data-range-picker></app-data-range-picker>
+        <app-free-rooms></app-free-rooms>
+        <button mat-button (click)="initReservation()" [disabled]="freeRoomsView.markedRoom === undefined">Reserve</button>
       </div>
     </mat-grid-tile>
+    <mat-grid-tile [colspan]="2" [rowspan]="1">
+      <app-reservations></app-reservations>
+    </mat-grid-tile>
   </mat-grid-list>
-  
-
 </div>

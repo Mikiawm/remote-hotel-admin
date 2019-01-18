@@ -50,6 +50,6 @@ export class CreateReservationComponent implements OnInit {
           this.reservationService.add(newReservation).subscribe();
         }
       );
-      console.log(this.customerForm.valid);
+      this.dialogRef.close();
   }
 }

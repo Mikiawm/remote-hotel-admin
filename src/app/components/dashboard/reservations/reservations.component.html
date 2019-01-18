@@ -1,0 +1,30 @@
+<h1>
+  Reservations:
+</h1>
+<div fxLayout="row">
+  <div *ngFor="let column of displayedColumn" fxFlex="20">
+    {{column}}
+  </div>
+</div>
+<div fxLayout="column">
+  <div>
+    <div *ngFor="let reservation of reservations">
+      <div fxLayout="row">
+        <div fxFlex="20">
+          {{reservation.RoomId}}
+        </div>
+        <div fxFlex="20">
+          {{reservation.CustomerId}}
+        </div>
+        <div fxFlex="20">
+          {{reservation.ReservationKey}}
+        </div>
+        <div fxFlex="20">
+          {{reservation.DateFrom}}
+        </div>
+        <div fxFlex="20">
+          {{reservation.DateTo}}
+        </div>
+      </div>
+    </div>
+  </div>

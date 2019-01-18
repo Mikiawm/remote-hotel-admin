@@ -2,7 +2,7 @@ export class Reservation {
     ReservationId: number;
     CustomerId: number;
     RoomId: number;
-    RoomKey: string;
+    ReservationKey: string;
     CreateDateTime: Date;
     DateFrom: Date;
     DateTo: Date;
