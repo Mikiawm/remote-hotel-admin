@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AccessLogService } from 'src/app/services/access-log.service';
-import { Observable } from 'rxjs';
+import { Observable, timer, interval } from 'rxjs';
 import { AccessLog } from 'src/app/models/access-log';
-import { map, catchError } from 'rxjs/operators';
+import { map, catchError, timeInterval } from 'rxjs/operators';
 
 @Component({
   selector: 'app-access-logs',
@@ -16,7 +16,7 @@ export class AccessLogsComponent implements OnInit {
   accessLogs: AccessLog[];
   displayedColumn = ['LogId', 'CreatedDate', 'Status', 'Info', 'PasswordHash'];
   constructor(private accessLogService: AccessLogService) {
-    this.getAccessLogs().subscribe();
+    interval(1000).subscribe(() => this.getAccessLogs().subscribe());
   }
 
   ngOnInit() {

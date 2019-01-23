@@ -29,7 +29,7 @@ export class DashboardComponent implements OnInit, AfterContentInit {
       this.freeRoomsView.getFreeRooms(changes).subscribe();
     });
   }
-  private getReservations(){
+  private getReservations() {
     this.reservationsComponent.getAllReservations();
   }
 

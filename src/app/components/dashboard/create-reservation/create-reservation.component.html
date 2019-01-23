@@ -1,3 +1,5 @@
+<h1>Reservation:</h1>
+<h2>Room:</h2>
 <div fxLayout="row">
   <div *ngFor="let column of displayedColumn" fxFlex="20">
     {{column}}
@@ -20,16 +22,17 @@
     {{data.room.Standard}}
   </div>
 </div>
-<h1>Reservation</h1>
+<h2>Data range</h2>
 <div fxLayout="row">
   <div fxFlex="50">
-    {{data.dates.dateFrom}}
+    From: {{data.dates.dateFrom | date: 'short'}}
   </div>
   <div fxFlex="50">
-    {{data.dates.dateTo}}
+    To: {{data.dates.dateTo | date: 'short'}}
   </div>
 </div>
-<h1>Customer:</h1>
+<h2>Customer:</h2>
+<button mat-button (click)="GetCustomer()">Get Customers</button>
 <form [formGroup]="customerForm">
   <label>
     First Name:
