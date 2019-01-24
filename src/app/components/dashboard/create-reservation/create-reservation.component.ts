@@ -1,10 +1,12 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject, ViewChild } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { ReservationService } from 'src/app/services/reservation.service';
 import { CustomerService } from 'src/app/services/customer.service';
 import { Customer } from 'src/app/models/customer';
 import { Reservation } from 'src/app/models/reservation';
+import { AddCustomerComponent } from './add-customer/add-customer.component';
+import { CustomersComponent } from './customers/customers.component';
 
 @Component({
   selector: 'app-create-reservation',
@@ -12,30 +14,25 @@ import { Reservation } from 'src/app/models/reservation';
   styleUrls: ['./create-reservation.component.scss']
 })
 export class CreateReservationComponent implements OnInit {
+  @ViewChild(AddCustomerComponent) addCustomerComponent: AddCustomerComponent;
+  @ViewChild(CustomersComponent) customers: CustomersComponent;
   displayedColumn: string[] = ['RoomNumber', 'Standard', 'Beds', 'DoubleBeds', 'SingleBeds'];
 
   constructor(public dialogRef: MatDialogRef<CreateReservationComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any, private fb: FormBuilder,
     private reservationService: ReservationService, private customerService: CustomerService) { }
 
-  customerForm: FormGroup;
-  ngOnInit() {
-    console.log(this.data);
-    this.customerForm = this.fb.group({
-      firstName: new FormControl('', Validators.required),
-      lastName: new FormControl('', Validators.required),
-      phoneNumber: new FormControl('', Validators.required),
-      email: new FormControl('', Validators.required)
-    });
 
+  ngOnInit() {
   }
 
   createNewReservation() {
-    const newCustomer = new Customer();
-    newCustomer.FirstName = this.customerForm.value.firstName;
-    newCustomer.LastName = this.customerForm.value.lastName;
-    newCustomer.PhoneNumber = this.customerForm.value.phoneNumber;
-    newCustomer.Email = this.customerForm.value.email;
+    let newCustomer = new Customer();
+    if (this.customers.customerMarked) {
+      newCustomer = this.customers.customerMarked;
+    } else {
+      newCustomer = this.addCustomerComponent.customerForm.value as Customer;
+    }
 
     const newReservation = new Reservation();
 
@@ -50,6 +47,6 @@ export class CreateReservationComponent implements OnInit {
           this.reservationService.add(newReservation).subscribe();
         }
       );
-      this.dialogRef.close();
+    this.dialogRef.close();
   }
 }

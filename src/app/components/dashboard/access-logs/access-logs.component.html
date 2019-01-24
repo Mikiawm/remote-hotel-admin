@@ -1,31 +1,3 @@
 <div style="background-color: darkviolet">
-  <h2>Access Logs</h2>
-  <div fxLayout="row">
-    <div *ngFor="let column of displayedColumn" fxFlex="20">
-      {{column}}
-    </div>
-  </div>
-  <div fxLayout="column">
-    <div>
-      <div *ngFor="let accessLog of accessLogs">
-        <div fxLayout="row">
-          <div fxFlex="20">
-            {{accessLog.LogId}}
-          </div>
-          <div fxFlex="20">
-            {{accessLog.CreatedDate}}
-          </div>
-          <div fxFlex="20">
-            {{accessLog.Status}}
-          </div>
-          <div fxFlex="20">
-            {{accessLog.Info}}
-          </div>
-          <div fxFlex="20">
-            {{accessLog.PasswordHash}}
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+    <app-list-view [DisplayedColumns]="displayedColumn" [Items]="accessLogs" [Keys]="displayedColumn" [Header]="Accesslogs"></app-list-view>
 </div>

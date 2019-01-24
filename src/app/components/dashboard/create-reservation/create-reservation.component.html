@@ -33,22 +33,5 @@
 </div>
 <h2>Customer:</h2>
 <button mat-button (click)="GetCustomer()">Get Customers</button>
-<form [formGroup]="customerForm">
-  <label>
-    First Name:
-    <input type="text" formControlName="firstName">
-  </label>
-  <label>
-    Last Name:
-    <input type="text" formControlName="lastName">
-  </label>
-  <label>
-    Email:
-    <input type="text" formControlName="email">
-  </label>
-  <label>
-    Phonenumber:
-    <input type="text" formControlName="phoneNumber">
-  </label>
-</form>
+<app-add-customer></app-add-customer>
 <button mat-button [disabled]="!customerForm.valid" (click)="createNewReservation()">Add reservation</button>

@@ -1,0 +1,13 @@
+<h3 mat-subheader>{{Header}}</h3>
+<div fxLayout="row">
+  <div *ngFor="let column of DisplayedColumns" fxFlex="16">
+    {{column}}
+  </div>
+</div>
+<div fxLayout="column">
+  <div *ngFor="let item of Items">
+    <div fxLayout="row">
+      <div fxFlex="16" *ngFor="let key of Keys">{{item[key]}}</div>
+    </div>
+  </div>
+</div>

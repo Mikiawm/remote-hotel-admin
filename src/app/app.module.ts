@@ -13,7 +13,6 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { UsersService } from './services/users.service';
 import { RoomService } from './services/room.service';
 import { HotelService } from './services/hotel.service';
-import { AccessLogComponent } from './components/list-view/access-log/access-log.component';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { LoginComponent } from './components/login/login.component';
@@ -39,6 +38,8 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { FreeRoomsComponent } from './components/dashboard/free-rooms/free-rooms.component';
 import { CreateReservationComponent } from './components/dashboard/create-reservation/create-reservation.component';
 import { ReservationsComponent } from './components/dashboard/reservations/reservations.component';
+import { AddCustomerComponent } from './components/dashboard/create-reservation/add-customer/add-customer.component';
+import { ListViewComponent } from './components/list-view/list-view.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -55,7 +56,9 @@ import { ReservationsComponent } from './components/dashboard/reservations/reser
     DataRangePickerComponent,
     FreeRoomsComponent,
     CreateReservationComponent,
-    ReservationsComponent
+    ReservationsComponent,
+    AddCustomerComponent,
+    ListViewComponent
   ],
   imports: [
     BrowserModule,

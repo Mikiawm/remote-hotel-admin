@@ -20,6 +20,7 @@ export class DashboardComponent implements OnInit, AfterContentInit {
   ngOnInit(): void {
 
   }
+  
 
   ngAfterContentInit(): void {
     this.getFreeRooms();
