@@ -11,7 +11,7 @@ export class ListViewComponent<T> implements OnInit {
   @Input() Header: string;
   @Input() Keys: string[];
 
-  markedItem: T;
+  markedItem?: T;
 
   constructor() { }
 
