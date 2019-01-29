@@ -34,7 +34,7 @@ export class CustomersModalComponent implements OnInit {
   save() {
     this.dialogRef.close(this.listViewComponent.markedItem);
   }
-  close() {
+  cancel() {
     this.dialogRef.close();
   }
 
