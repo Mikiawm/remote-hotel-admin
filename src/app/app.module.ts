@@ -18,7 +18,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { LoginComponent } from './components/login/login.component';
 import { AccessLogsComponent } from './components/dashboard/access-logs/access-logs.component';
 import { AccessLogService } from './services/access-log.service';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { AuthGuard } from './guards/auth.guard';
 import { CreatorComponent } from './components/creator/creator.component';
 import { MatExpansionModule } from '@angular/material/expansion';
@@ -40,6 +40,10 @@ import { CreateReservationComponent } from './components/dashboard/create-reserv
 import { ReservationsComponent } from './components/dashboard/reservations/reservations.component';
 import { AddCustomerComponent } from './components/dashboard/create-reservation/add-customer/add-customer.component';
 import { ListViewComponent } from './components/list-view/list-view.component';
+import { CalendarModule, DateAdapter } from 'angular-calendar';
+import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
+import { ReservarionCalendarComponent } from './components/dashboard/reservarion-calendar/reservarion-calendar.component';
+import { CustomersModalComponent } from './components/dashboard/create-reservation/customers/customers.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -48,6 +52,7 @@ import { ListViewComponent } from './components/list-view/list-view.component';
     RoomsComponent,
     AccessLogsComponent,
     CustomersComponent,
+    CustomersModalComponent,
     CreatorComponent,
     AddRoomFormComponent,
     HotelSelectorComponent,
@@ -58,12 +63,14 @@ import { ListViewComponent } from './components/list-view/list-view.component';
     CreateReservationComponent,
     ReservationsComponent,
     AddCustomerComponent,
-    ListViewComponent
+    ListViewComponent,
+    ReservarionCalendarComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
+    FormsModule,
     BrowserAnimationsModule,
     MatDialogModule,
     LayoutModule,
@@ -84,9 +91,13 @@ import { ListViewComponent } from './components/list-view/list-view.component';
     MatDividerModule,
     MatSelectModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    CalendarModule.forRoot({
+      provide: DateAdapter,
+      useFactory: adapterFactory
+    })
   ],
-  entryComponents: [AddEditRoomComponent, CreateReservationComponent],
+  entryComponents: [AddEditRoomComponent, CreateReservationComponent, AddCustomerComponent, CustomersModalComponent],
   providers: [UsersService, { provide: MAT_DIALOG_DATA, useValue: {} },
     ReservationService, RoomService, MatDatepickerModule, HotelService, AccessLogService, AuthGuard],
   bootstrap: [AppComponent]

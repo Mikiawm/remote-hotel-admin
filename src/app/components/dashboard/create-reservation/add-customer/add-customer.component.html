@@ -1,18 +1,24 @@
-<form [formGroup]="customerForm">
-  <label>
-    First Name:
-    <input type="text" formControlName="firstName">
-  </label>
-  <label>
-    Last Name:
-    <input type="text" formControlName="lastName">
-  </label>
-  <label>
-    Email:
-    <input type="text" formControlName="email">
-  </label>
-  <label>
-    Phonenumber:
-    <input type="text" formControlName="phoneNumber">
-  </label>
+<form [formGroup]="customerForm" fxLayout="row">
+  <div>
+    <label>
+      First Name:
+      <input type="text" formControlName="firstName">
+    </label>
+    <label>
+      Last Name:
+      <input type="text" formControlName="lastName">
+    </label>
+  </div>
+  <div>
+    <label>
+      Email:
+      <input type="text" formControlName="email">
+    </label>
+    <label>
+      Phonenumber:
+      <input type="text" formControlName="phoneNumber">
+    </label>
+  </div>
 </form>
+<button mat-button (click)="save()">Save</button>
+<button mat-button (click)="cancel()">Cancel</button>

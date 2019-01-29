@@ -31,7 +31,21 @@
     To: {{data.dates.dateTo | date: 'short'}}
   </div>
 </div>
-<h2>Customer:</h2>
-<button mat-button (click)="GetCustomer()">Get Customers</button>
-<app-add-customer></app-add-customer>
-<button mat-button [disabled]="!customerForm.valid" (click)="createNewReservation()">Add reservation</button>
+
+<div fxLayout="row" *ngIf="customer">
+  <h2>Customer:</h2>
+  <div>
+    <div>FirstName: {{customer.FirstName}}</div>
+    <div>LastName: {{customer.LastName}}</div>
+  </div>
+  <div>
+    <div>Email: {{customer.Email}}</div>
+    <div>PhoneNumber: {{customer.PhoneNumber}}</div>
+  </div>
+</div>
+<div *ngIf="!customer">
+  <h2>You need to add customer first</h2>
+</div>
+<button mat-button (click)="getCustomer()">Get Customers</button>
+<button mat-button (click)="createCustomer()">Create Customer</button>
+<button mat-button [disabled]="customerValidation()" (click)="createNewReservation()">Add reservation</button>

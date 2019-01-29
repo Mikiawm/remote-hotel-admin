@@ -15,7 +15,6 @@ export class ReservationsComponent implements OnInit {
 
   ngOnInit() {
     this.getAllReservations();
-
   }
   getAllReservations() {
     this.reservationService.getAll().subscribe(

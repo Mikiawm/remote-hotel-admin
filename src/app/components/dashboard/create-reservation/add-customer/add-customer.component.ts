@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
+import { MatDialogRef } from '@angular/material';
+import { CustomerService } from 'src/app/services/customer.service';
 
 @Component({
   selector: 'app-add-customer',
@@ -7,8 +9,8 @@ import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms'
   styleUrls: ['./add-customer.component.scss']
 })
 export class AddCustomerComponent implements OnInit {
-
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder, public dialogRef: MatDialogRef<AddCustomerComponent>,
+    private customerService: CustomerService) { }
   customerForm: FormGroup;
   ngOnInit() {
     this.customerForm = this.fb.group({
@@ -18,5 +20,12 @@ export class AddCustomerComponent implements OnInit {
       email: new FormControl('', Validators.required)
     });
   }
-
+  cancel() {
+    this.dialogRef.close();
+  }
+  save() {
+    this.customerService.add(this.customerForm.value).subscribe(
+      x => this.dialogRef.close(x)
+    );
+  }
 }

@@ -18,4 +18,7 @@ export class ListViewComponent<T> implements OnInit {
   ngOnInit() {
   }
 
+  markItem(item: T) {
+    this.markedItem = item;
+  }
 }

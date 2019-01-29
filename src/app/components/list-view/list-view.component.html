@@ -5,8 +5,8 @@
   </div>
 </div>
 <div fxLayout="column">
-  <div *ngFor="let item of Items">
-    <div fxLayout="row">
+  <div *ngFor="let item of Items" (click)="markItem(item)">
+    <div fxLayout="row" [ngClass]="{'marked': markedItem == item}" >
       <div fxFlex="16" *ngFor="let key of Keys">{{item[key]}}</div>
     </div>
   </div>

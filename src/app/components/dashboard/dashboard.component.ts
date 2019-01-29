@@ -20,7 +20,6 @@ export class DashboardComponent implements OnInit, AfterContentInit {
   ngOnInit(): void {
 
   }
-  
 
   ngAfterContentInit(): void {
     this.getFreeRooms();
@@ -41,7 +40,6 @@ export class DashboardComponent implements OnInit, AfterContentInit {
     };
 
     const dialogRef = this.dialog.open(CreateReservationComponent, {
-      height: '400px',
       width: '600px',
       data: data,
     });
