@@ -2,7 +2,8 @@ import {
   Component,
   ChangeDetectionStrategy,
   ViewChild,
-  TemplateRef
+  TemplateRef,
+  OnInit
 } from '@angular/core';
 import {
   startOfDay,
@@ -22,63 +23,51 @@ import {
   CalendarEventTimesChangedEvent,
   CalendarView
 } from 'angular-calendar';
-const colors: any = {
-  red: {
-    primary: '#ad2121',
-    secondary: '#FAE3E3'
-  },
-  blue: {
-    primary: '#1e90ff',
-    secondary: '#D1E8FF'
-  },
-  yellow: {
-    primary: '#e3bc08',
-    secondary: '#FDF1BA'
-  }
-};
+import { ReservationService } from 'src/app/services/reservation.service';
+import { Reservation } from 'src/app/models/reservation';
+
 @Component({
   selector: 'app-reservation-calendar',
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './reservarion-calendar.component.html',
   styleUrls: ['./reservarion-calendar.component.scss']
 })
-export class ReservarionCalendarComponent {
+export class ReservarionCalendarComponent implements OnInit {
   view = 'month';
-
+  reservations: Reservation[];
+  events: CalendarEvent[];
   viewDate: Date = new Date();
+  constructor(private reservationService: ReservationService) {
+  }
 
-  events: CalendarEvent[] = [
-    {
-      title: 'Editable event',
-      color: colors.yellow,
-      start: new Date(),
-      actions: [
-        {
-          label: '<i class="fa fa-fw fa-pencil"></i>',
-          onClick: ({ event }: { event: CalendarEvent }): void => {
-            console.log('Edit event', event);
+  ngOnInit() {
+    this.reservationService.getAll().subscribe(
+      x => this.reservations = x as Reservation[],
+      error => console.log(error),
+      () => this.createCalendarEvents()
+    );
+
+  }
+  createCalendarEvents(): any {
+    this.events = [];
+    console.log(this.reservations);
+    this.reservations.forEach(element => {
+      const newCalendarEvent: CalendarEvent = {
+        title: element.ReservationId.toString(),
+        start: new Date(element.DateFrom),
+        end: new Date(element.DateTo),
+        id: element.ReservationId,
+        actions: [
+          {
+            label: '<i class="fa fa-fw fa-pencil"></i>',
+            onClick: ({ event }: { event: CalendarEvent }): void => {
+              console.log('Edit event', event);
+            }
           }
-        }
-      ]
-    },
-    {
-      title: 'Deletable event',
-      color: colors.blue,
-      start: new Date(),
-      actions: [
-        {
-          label: '<i class="fa fa-fw fa-times"></i>',
-          onClick: ({ event }: { event: CalendarEvent }): void => {
-            this.events = this.events.filter(iEvent => iEvent !== event);
-            console.log('Event deleted', event);
-          }
-        }
-      ]
-    },
-    {
-      title: 'Non editable and deletable event',
-      color: colors.red,
-      start: new Date()
-    }
-  ];
+        ]
+      };
+      this.events.push(newCalendarEvent);
+    });
+    console.log(this.events);
+  }
 }

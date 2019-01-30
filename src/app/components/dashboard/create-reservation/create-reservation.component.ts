@@ -30,16 +30,17 @@ export class CreateReservationComponent implements OnInit {
 
   createNewReservation() {
     const newReservation = new Reservation();
+    newReservation.CustomerId = this.customer.CustomerId;
     newReservation.RoomId = this.data.room.RoomId;
     newReservation.DateFrom = this.data.dates.dateFrom;
     newReservation.DateTo = this.data.dates.dateTo;
     this.reservationService.add(newReservation).subscribe();
     this.dialogRef.close();
   }
-  customerValidation(): boolean {
-    // if (this.addCustomerComponent.customerForm.valid || (this.customers && this.customers.customerMarked)) {
-    //   return true;
-    // }
+  customerValid(): boolean {
+    if (this.customer) {
+      return true;
+    }
     return false;
   }
   getCustomer() {

@@ -48,4 +48,4 @@
 </div>
 <button mat-button (click)="getCustomer()">Get Customers</button>
 <button mat-button (click)="createCustomer()">Create Customer</button>
-<button mat-button [disabled]="customerValidation()" (click)="createNewReservation()">Add reservation</button>
+<button mat-button [disabled]="!customerValid()" (click)="createNewReservation()">Add reservation</button>
