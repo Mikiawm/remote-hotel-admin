@@ -20,19 +20,12 @@ export class FreeRoomsComponent implements DoCheck {
 
   constructor(private roomService: RoomService) { }
 
-  // ngOnChanges(changes) {
-  //   console.log(changes);
-  //   console.log(this.reservationForm.value);
-  // }
   ngDoCheck() {
-    // console.log(this.reservationForm);
   }
   getFreeRooms(changes): Observable<Room[]> {
     return this.roomService.getFreeRooms(changes.dateFrom, changes.dateTo).pipe(
       map(res => {
         this.rooms = res;
-        console.log('asda');
-        console.log(this.rooms);
         return res;
       })
     );

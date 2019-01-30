@@ -50,13 +50,16 @@ export class ReservarionCalendarComponent implements OnInit {
   }
   createCalendarEvents(): any {
     this.events = [];
-    console.log(this.reservations);
     this.reservations.forEach(element => {
       const newCalendarEvent: CalendarEvent = {
         title: element.ReservationId.toString(),
         start: new Date(element.DateFrom),
         end: new Date(element.DateTo),
         id: element.ReservationId,
+        color: {
+          primary: '#' + (element.ReservationId * 0.66).toString(16).substr(2, 6),
+          secondary: '#' + (element.ReservationId * 0.33).toString(16).substr(2, 6)
+        },
         actions: [
           {
             label: '<i class="fa fa-fw fa-pencil"></i>',
@@ -68,6 +71,5 @@ export class ReservarionCalendarComponent implements OnInit {
       };
       this.events.push(newCalendarEvent);
     });
-    console.log(this.events);
   }
 }
