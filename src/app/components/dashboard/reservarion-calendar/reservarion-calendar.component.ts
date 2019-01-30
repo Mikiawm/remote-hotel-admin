@@ -15,7 +15,7 @@ import {
   isSameMonth,
   addHours
 } from 'date-fns';
-import { Subject } from 'rxjs';
+import { Subject, Observable } from 'rxjs';
 // import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import {
   CalendarEvent,
@@ -25,6 +25,7 @@ import {
 } from 'angular-calendar';
 import { ReservationService } from 'src/app/services/reservation.service';
 import { Reservation } from 'src/app/models/reservation';
+import { map } from 'rxjs/internal/operators/map';
 
 @Component({
   selector: 'app-reservation-calendar',
@@ -35,41 +36,37 @@ import { Reservation } from 'src/app/models/reservation';
 export class ReservarionCalendarComponent implements OnInit {
   view = 'month';
   reservations: Reservation[];
-  events: CalendarEvent[];
+  events$: Observable<Array<CalendarEvent<{ reservation: Reservation }>>>;
   viewDate: Date = new Date();
+  refresh: Subject<any> = new Subject();
   constructor(private reservationService: ReservationService) {
   }
 
   ngOnInit() {
-    this.reservationService.getAll().subscribe(
-      x => this.reservations = x as Reservation[],
-      error => console.log(error),
-      () => this.createCalendarEvents()
+    this.events$ = this.reservationService.getAll()
+    .pipe(
+      map(( results: Reservation[] ) => {
+        return results.map((reservation: Reservation) => {
+          return {
+            title: reservation.ReservationId.toString(),
+            start: new Date(reservation.DateFrom),
+            end: new Date(reservation.DateTo),
+            id: reservation.ReservationId,
+            color: {
+              primary: '#' + (reservation.ReservationId * 0.66).toString(16).substr(2, 6),
+              secondary: '#' + (reservation.ReservationId * 0.33).toString(16).substr(2, 6)
+            },
+            actions: [
+              {
+                label: '<i class="fa fa-fw fa-pencil"></i>',
+                onClick: ({ event }: { event: CalendarEvent }): void => {
+                  console.log('Edit event', event);
+                }
+              }
+            ]
+          };
+        });
+      })
     );
-
-  }
-  createCalendarEvents(): any {
-    this.events = [];
-    this.reservations.forEach(element => {
-      const newCalendarEvent: CalendarEvent = {
-        title: element.ReservationId.toString(),
-        start: new Date(element.DateFrom),
-        end: new Date(element.DateTo),
-        id: element.ReservationId,
-        color: {
-          primary: '#' + (element.ReservationId * 0.66).toString(16).substr(2, 6),
-          secondary: '#' + (element.ReservationId * 0.33).toString(16).substr(2, 6)
-        },
-        actions: [
-          {
-            label: '<i class="fa fa-fw fa-pencil"></i>',
-            onClick: ({ event }: { event: CalendarEvent }): void => {
-              console.log('Edit event', event);
-            }
-          }
-        ]
-      };
-      this.events.push(newCalendarEvent);
-    });
   }
 }

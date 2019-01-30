@@ -3,7 +3,7 @@
   [(viewDate)]="viewDate">
 </mwl-demo-utils-calendar-header> -->
 
-<div [ngSwitch]="view" class="reservation-main">
+<div [ngSwitch]="view" class="reservation-main" *ngIf="events$ | async; else loading; let events">
   <mwl-calendar-month-view
     *ngSwitchCase="'month'"
     [viewDate]="viewDate"
