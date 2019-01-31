@@ -46,6 +46,7 @@ import { ReservarionCalendarComponent } from './components/dashboard/reservarion
 import { CustomersModalComponent } from './components/dashboard/create-reservation/customers/customers.component';
 import { InitReservationComponent } from './components/dashboard/init-reservation/init-reservation.component';
 import { DatePipe } from '@angular/common';
+import { ClickedDayModalComponent } from './components/dashboard/reservarion-calendar/clicked-day-modal/clicked-day-modal.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -67,7 +68,8 @@ import { DatePipe } from '@angular/common';
     AddCustomerComponent,
     ListViewComponent,
     ReservarionCalendarComponent,
-    InitReservationComponent
+    InitReservationComponent,
+    ClickedDayModalComponent
   ],
   imports: [
     BrowserModule,
@@ -101,7 +103,7 @@ import { DatePipe } from '@angular/common';
     })
   ],
   entryComponents: [AddEditRoomComponent, CreateReservationComponent, AddCustomerComponent, CustomersModalComponent,
-    InitReservationComponent],
+    InitReservationComponent, ClickedDayModalComponent],
   providers: [UsersService, { provide: MAT_DIALOG_DATA, useValue: {} },
     ReservationService, RoomService, MatDatepickerModule, HotelService, AccessLogService, AuthGuard, DatePipe],
   bootstrap: [AppComponent]

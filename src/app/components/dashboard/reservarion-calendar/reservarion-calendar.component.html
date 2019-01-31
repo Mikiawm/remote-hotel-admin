@@ -8,6 +8,7 @@
     *ngSwitchCase="'month'"
     [viewDate]="viewDate"
     [events]="events"
-    [activeDayIsOpen]="true">
+    [activeDayIsOpen]="true"
+    (dayClicked)="clickedDate($event.day)">
   </mwl-calendar-month-view>
 </div>

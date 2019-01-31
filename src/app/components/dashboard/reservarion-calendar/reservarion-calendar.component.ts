@@ -26,6 +26,8 @@ import {
 import { ReservationService } from 'src/app/services/reservation.service';
 import { Reservation } from 'src/app/models/reservation';
 import { map } from 'rxjs/internal/operators/map';
+import { MatDialog } from '@angular/material';
+import { ClickedDayModalComponent } from './clicked-day-modal/clicked-day-modal.component';
 
 @Component({
   selector: 'app-reservation-calendar',
@@ -39,34 +41,40 @@ export class ReservarionCalendarComponent implements OnInit {
   events$: Observable<Array<CalendarEvent<{ reservation: Reservation }>>>;
   viewDate: Date = new Date();
   refresh: Subject<any> = new Subject();
-  constructor(private reservationService: ReservationService) {
+  constructor(private reservationService: ReservationService, private dialog: MatDialog) {
   }
 
   ngOnInit() {
     this.events$ = this.reservationService.getAll()
-    .pipe(
-      map(( results: Reservation[] ) => {
-        return results.map((reservation: Reservation) => {
-          return {
-            title: reservation.ReservationId.toString(),
-            start: new Date(reservation.DateFrom),
-            end: new Date(reservation.DateTo),
-            id: reservation.ReservationId,
-            color: {
-              primary: '#' + (reservation.ReservationId * 0.66).toString(16).substr(2, 6),
-              secondary: '#' + (reservation.ReservationId * 0.33).toString(16).substr(2, 6)
-            },
-            actions: [
-              {
-                label: '<i class="fa fa-fw fa-pencil"></i>',
-                onClick: ({ event }: { event: CalendarEvent }): void => {
-                  console.log('Edit event', event);
+      .pipe(
+        map((results: Reservation[]) => {
+          return results.map((reservation: Reservation) => {
+            return {
+              title: reservation.ReservationId.toString(),
+              start: new Date(reservation.DateFrom),
+              end: new Date(reservation.DateTo),
+              id: reservation.ReservationId,
+              color: {
+                primary: '#' + (reservation.ReservationId * 0.66).toString(16).substr(2, 6),
+                secondary: '#' + (reservation.ReservationId * 0.33).toString(16).substr(2, 6)
+              },
+              actions: [
+                {
+                  label: '<i class="fa fa-fw fa-pencil"></i>',
+                  onClick: ({ event }: { event: CalendarEvent }): void => {
+                    console.log('Edit event', event);
+                  }
                 }
-              }
-            ]
-          };
-        });
-      })
-    );
+              ]
+            };
+          });
+        })
+      );
+  }
+  clickedDate(event) {
+    const dialogRef = this.dialog.open(ClickedDayModalComponent, {
+      width: '600px',
+      data: event,
+    });
   }
 }
