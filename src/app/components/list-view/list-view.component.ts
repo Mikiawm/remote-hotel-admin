@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-list-view',
@@ -13,12 +14,18 @@ export class ListViewComponent<T> implements OnInit {
 
   markedItem?: T;
 
-  constructor() { }
+  constructor(private datePipe: DatePipe) { }
 
   ngOnInit() {
   }
 
   markItem(item: T) {
     this.markedItem = item;
+  }
+  format(input) {
+    if (Object.prototype.toString.call(input) === '[object Date]') {
+      return this.datePipe.transform(input, 'yyyy-dd-MM');
+    }
+    return input;
   }
 }

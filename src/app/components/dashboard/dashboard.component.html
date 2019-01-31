@@ -1,18 +1,12 @@
 <div class="grid-container">
   <h1 class="mat-h1">Dashboard</h1>
+  <button mat-button (click)='openReservationCreator()'>Open reservation creator</button>
   <mat-grid-list cols="2" rowHeight="1:1">
     <mat-grid-tile [colspan]="2" [rowspan]="1">
         <app-reservation-calendar></app-reservation-calendar>
     </mat-grid-tile>
     <mat-grid-tile [colspan]="1" [rowspan]="1">
       <app-access-logs></app-access-logs>
-    </mat-grid-tile>
-    <mat-grid-tile [colspan]="1" [rowspan]="1">
-      <div fxLayout="column" fxFlex="auto" fxFill>
-        <app-data-range-picker></app-data-range-picker>
-        <app-free-rooms></app-free-rooms>
-        <button mat-button (click)="initReservation()" [disabled]="freeRoomsView.markedRoom === undefined">Reserve</button>
-      </div>
     </mat-grid-tile>
     <mat-grid-tile [colspan]="2" [rowspan]="1">
       <app-reservations></app-reservations>

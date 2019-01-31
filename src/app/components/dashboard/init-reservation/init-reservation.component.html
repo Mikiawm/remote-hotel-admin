@@ -1,0 +1,5 @@
+<div fxLayout="column" fxFlex="auto" fxFill>
+  <app-data-range-picker></app-data-range-picker>
+  <app-free-rooms></app-free-rooms>
+  <button mat-button (click)="initReservation()" [disabled]="freeRoomsView.markedRoom === undefined">Reserve</button>
+</div>

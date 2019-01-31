@@ -44,6 +44,8 @@ import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 import { ReservarionCalendarComponent } from './components/dashboard/reservarion-calendar/reservarion-calendar.component';
 import { CustomersModalComponent } from './components/dashboard/create-reservation/customers/customers.component';
+import { InitReservationComponent } from './components/dashboard/init-reservation/init-reservation.component';
+import { DatePipe } from '@angular/common';
 @NgModule({
   declarations: [
     AppComponent,
@@ -64,7 +66,8 @@ import { CustomersModalComponent } from './components/dashboard/create-reservati
     ReservationsComponent,
     AddCustomerComponent,
     ListViewComponent,
-    ReservarionCalendarComponent
+    ReservarionCalendarComponent,
+    InitReservationComponent
   ],
   imports: [
     BrowserModule,
@@ -97,9 +100,10 @@ import { CustomersModalComponent } from './components/dashboard/create-reservati
       useFactory: adapterFactory
     })
   ],
-  entryComponents: [AddEditRoomComponent, CreateReservationComponent, AddCustomerComponent, CustomersModalComponent],
+  entryComponents: [AddEditRoomComponent, CreateReservationComponent, AddCustomerComponent, CustomersModalComponent,
+    InitReservationComponent],
   providers: [UsersService, { provide: MAT_DIALOG_DATA, useValue: {} },
-    ReservationService, RoomService, MatDatepickerModule, HotelService, AccessLogService, AuthGuard],
+    ReservationService, RoomService, MatDatepickerModule, HotelService, AccessLogService, AuthGuard, DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
