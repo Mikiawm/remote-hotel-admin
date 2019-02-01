@@ -39,7 +39,7 @@ export class DashboardComponent implements OnInit {
       this.reservationCalendarComponent.ngOnInit();
     });
   }
-  openAccessLogs(){
+  openAccessLogs() {
     const dialogRef = this.dialog.open(AccessLogsComponent, {
       width: '600px'
     });

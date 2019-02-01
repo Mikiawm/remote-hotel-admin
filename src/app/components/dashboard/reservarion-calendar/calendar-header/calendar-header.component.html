@@ -1,0 +1,22 @@
+<div fxLayout="row">
+  <div fxFlex>
+    <h3 style="text-align: center">{{ viewDate | calendarDate:(view + 'ViewTitle'):locale }}</h3>
+  </div>
+  <div fxFlex="25" fxFlexAlign="center">
+    <div fxLayout="row">
+      <button mat-raised-button color="primary" fxFlex="30" mwlCalendarPreviousView [view]="view" [(viewDate)]="viewDate"
+        (viewDateChange)="viewDateChange.next(viewDate)">
+        Previous
+      </button>
+      <div fxFlex="5"></div>
+      <button mat-raised-button color="accent" fxFlex="30" mwlCalendarToday [(viewDate)]="viewDate" (viewDateChange)="viewDateChange.next(viewDate)">
+        Today
+      </button>
+      <div fxFlex="5"></div>
+      <button mat-raised-button color="primary" fxFlex="30" mwlCalendarNextView [view]="view" [(viewDate)]="viewDate"
+        (viewDateChange)="viewDateChange.next(viewDate)">
+        Next
+      </button>
+    </div>
+  </div>
+</div>

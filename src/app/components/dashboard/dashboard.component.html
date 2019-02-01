@@ -1,10 +1,12 @@
-<div class="grid-container">
-  <h1 class="mat-h1">Dashboard</h1>
-  <button mat-button (click)='openReservationCreator()'>Open reservation creator</button>
-  <button mat-button (click)='openAccessLogs()'>Open access log list</button>
-  <mat-grid-list cols="2" rowHeight="1:1">
-    <mat-grid-tile [colspan]="2" [rowspan]="1">
-        <app-reservation-calendar></app-reservation-calendar>
-    </mat-grid-tile>
-  </mat-grid-list>
+<div fxLayout="column">
+  <div fxLayout="row">
+    <h1 class="mat-h1" fxFlex fxFlexAlign="center">Dashboard</h1>
+    <button fxFlex="10" mat-raised-button (click)='openReservationCreator()'>Open reservation creator</button>
+    <div fxFlex="2"></div>
+    <button fxFlex="10" mat-raised-button (click)='openAccessLogs()'>Open access log list</button>
+    <div fxFlex="2"></div>
+  </div>
+  <div fxFlex>
+    <app-reservation-calendar></app-reservation-calendar>
+  </div>
 </div>

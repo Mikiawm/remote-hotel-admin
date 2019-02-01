@@ -76,5 +76,5 @@ export class ReservarionCalendarComponent implements OnInit {
       width: '600px',
       data: event,
     });
-  }
+  } 
 }
