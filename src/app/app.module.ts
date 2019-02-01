@@ -103,7 +103,7 @@ import { ClickedDayModalComponent } from './components/dashboard/reservarion-cal
     })
   ],
   entryComponents: [AddEditRoomComponent, CreateReservationComponent, AddCustomerComponent, CustomersModalComponent,
-    InitReservationComponent, ClickedDayModalComponent],
+    InitReservationComponent, ClickedDayModalComponent, AccessLogsComponent],
   providers: [UsersService, { provide: MAT_DIALOG_DATA, useValue: {} },
     ReservationService, RoomService, MatDatepickerModule, HotelService, AccessLogService, AuthGuard, DatePipe],
   bootstrap: [AppComponent]

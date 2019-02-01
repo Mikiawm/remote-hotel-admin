@@ -1,14 +1,3 @@
-<p>
-  clicked-day-modal works!
-</p>
-<!-- <div *ngFor="event in data.events" fxLayout="row">
-  <div>
-    {{event.Title}}
-  </div>
-  <div>
-    {{event.DateFrom}}
-  </div>
-  <div>
-    {{event.DateTo}}
-  </div>
-</div> -->
+<div *ngFor="let event of data.events" fxLayout="row">
+  <div>{{event | json}}</div>
+</div>

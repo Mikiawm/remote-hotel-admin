@@ -9,6 +9,7 @@ import { MatDialog } from '@angular/material';
 import { ReservationsComponent } from './reservations/reservations.component';
 import { ReservarionCalendarComponent } from './reservarion-calendar/reservarion-calendar.component';
 import { InitReservationComponent } from './init-reservation/init-reservation.component';
+import { AccessLogsComponent } from './access-logs/access-logs.component';
 
 @Component({
   selector: 'app-dashboard',
@@ -36,6 +37,13 @@ export class DashboardComponent implements OnInit {
     });
     dialogRef.afterClosed().subscribe(result => {
       this.reservationCalendarComponent.ngOnInit();
+    });
+  }
+  openAccessLogs(){
+    const dialogRef = this.dialog.open(AccessLogsComponent, {
+      width: '600px'
+    });
+    dialogRef.afterClosed().subscribe(result => {
     });
   }
 }
