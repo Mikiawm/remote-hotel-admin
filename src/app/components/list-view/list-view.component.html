@@ -7,7 +7,7 @@
 <div fxLayout="column">
   <div *ngFor="let item of Items" (click)="markItem(item)">
     <div fxLayout="row" [ngClass]="{'marked': markedItem == item}">
-      <div fxFlex="16" *ngFor="let key of Keys">
+      <div fxFlex="columnSize" *ngFor="let key of Keys">
         <div>{{format(item[key])}}</div>
       </div>
     </div>

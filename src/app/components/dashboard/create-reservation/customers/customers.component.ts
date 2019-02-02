@@ -16,7 +16,7 @@ export class CustomersModalComponent implements OnInit {
   @ViewChild(ListViewComponent) listViewComponent: ListViewComponent<Customer>;
   customers: Customer[];
   header = 'customer';
-  displayedColumn: string[] = ['CustomerId', 'FirstName', 'LastName', 'Email', 'PhoneNumber', 'CreatedDate'];
+  displayedColumn: string[] = ['FirstName', 'LastName', 'Email', 'PhoneNumber', 'CreatedDate'];
 
   ngOnInit() {
     this.getCustomers().subscribe();
