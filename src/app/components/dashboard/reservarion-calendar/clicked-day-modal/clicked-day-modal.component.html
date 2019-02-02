@@ -1,14 +1,23 @@
-<div *ngFor="let event of data.events" fxLayout="row">
-  <div fxLayout="row">
-    <div fxFlex>
-      reservation: {{event.title}}
-    </div>
-    <div fxFlex="40">
-      from: {{event.start | date: 'short'}}
-    </div>
-    <div fxFlex="40">
-      to: {{event.end | date: 'short'}}
+<div fxLayout="column">
+  <h1 fxFlex="100" fxLayoutAlign="center center">
+    {{data.day.date | date: 'longDate'}}
+  </h1>
+  <h2 fxFlex="100" fxLayoutAlign="center center">
+    Reservations:
+  </h2>
+  <div *ngFor="let event of data.day.events" fxLayout="column">
+    <div fxLayout="column">
+      <h2 fxFlex fxLayoutAlign="center center">
+        Room number: {{event.title}}
+      </h2>
+      <div fxLayoutAlign="center none">
+        <div fxFlex="40">
+          from: {{event.start | date: 'short'}}
+        </div>
+        <div fxFlex="40">
+          to: {{event.end | date: 'short'}}
+        </div>
+      </div>
     </div>
   </div>
-  <!-- <div>{{event | json}}</div> -->
 </div>

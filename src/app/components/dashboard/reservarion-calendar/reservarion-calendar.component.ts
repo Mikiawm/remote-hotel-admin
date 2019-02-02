@@ -50,7 +50,7 @@ export class ReservarionCalendarComponent implements OnInit {
         map((results: Reservation[]) => {
           return results.map((reservation: Reservation) => {
             return {
-              title: reservation.ReservationId.toString(),
+              title: reservation.RoomNumber,
               start: new Date(reservation.DateFrom),
               end: new Date(reservation.DateTo),
               id: reservation.ReservationId,
