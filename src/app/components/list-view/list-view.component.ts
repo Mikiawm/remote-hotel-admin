@@ -1,6 +1,11 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { DatePipe } from '@angular/common';
 import * as moment from 'moment';
+import { Observable } from 'rxjs/internal/Observable';
+import { Subject } from 'rxjs/internal/Subject';
+import { BehaviorSubject } from 'rxjs/internal/BehaviorSubject';
+import { of } from 'rxjs/internal/observable/of';
+import { empty } from 'rxjs/internal/observable/empty';
 
 @Component({
   selector: 'app-list-view',
@@ -12,19 +17,20 @@ export class ListViewComponent<T> implements OnInit {
   @Input() Items: T[];
   @Input() Header: string;
   @Input() Keys: string[];
+  @Output() marked = new EventEmitter<T>();
   columnSize: number;
   markedItem?: T;
 
-  constructor(private datePipe: DatePipe) {
 
+  constructor(private datePipe: DatePipe) {
    }
 
   ngOnInit() {
-    console.log(this.Keys);
     this.columnSize = 100 / this.Keys.length;
   }
 
   markItem(item: T) {
+    this.marked.emit(item);
     this.markedItem = item;
   }
   format(input) {

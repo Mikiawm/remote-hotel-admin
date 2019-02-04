@@ -1,3 +1,4 @@
 <div style="background-color: darkviolet">
-    <app-list-view [DisplayedColumns]="displayedColumn" [Items]="accessLogs" [Keys]="displayedColumn" [Header]="Accesslogs"></app-list-view>
+    <app-list-view [DisplayedColumns]="displayedColumn" [Items]="accessLogs" [Keys]="displayedColumn" [Header]="header"
+    (marked)="onMarked()"></app-list-view>
 </div>

@@ -1,5 +1,6 @@
 <div>
-  <app-list-view [DisplayedColumns]="displayedColumn" [Items]="customers" [Keys]="displayedColumn" [Header]="header"></app-list-view>
+  <app-list-view [DisplayedColumns]="displayedColumn" [Items]="customers" [Keys]="displayedColumn" [Header]="header"
+  (marked)="onMarked($event)"></app-list-view>
   <button mat-button (click)="save()">Save</button>
   <button mat-button (click)="cancel()">Cancel</button>
 </div>

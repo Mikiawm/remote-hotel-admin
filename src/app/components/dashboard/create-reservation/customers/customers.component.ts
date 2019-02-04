@@ -17,6 +17,7 @@ export class CustomersModalComponent implements OnInit {
   customers: Customer[];
   header = 'customer';
   displayedColumn: string[] = ['FirstName', 'LastName', 'Email', 'PhoneNumber', 'CreatedDate'];
+  markedCustomer: Customer;
 
   ngOnInit() {
     this.getCustomers().subscribe();
@@ -25,14 +26,16 @@ export class CustomersModalComponent implements OnInit {
   getCustomers(): Observable<Customer[]> {
     return this.customerService.getAll().pipe(
       map(res => {
-        console.log(res);
         this.customers = res as Customer[];
         return res;
       })
     );
   }
+  onMarked(event) {
+    this.markedCustomer = event;
+  }
   save() {
-    this.dialogRef.close(this.listViewComponent.markedItem);
+    this.dialogRef.close(this.markedCustomer);
   }
   cancel() {
     this.dialogRef.close();
