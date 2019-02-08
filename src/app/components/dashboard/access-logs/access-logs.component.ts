@@ -17,7 +17,8 @@ export class AccessLogsComponent implements OnInit {
   accessLogs: AccessLog[];
   accessLogs$: Subscription;
   header = 'Access logs';
-  displayedColumn = ['LogId', 'CreatedDate', 'Status', 'Info', 'PasswordHash'];
+  displayedColumn = ['LogId', 'CreatedDate', 'Status', 'PasswordHash'];
+  columnSize = [10, 30, 30, 30];
 
   constructor(private accessLogService: AccessLogService) {
 

@@ -33,14 +33,10 @@
 </div>
 
 <div fxLayout="column" *ngIf="customer">
-  <h2>Customer:</h2>
+  <h2>Customer: {{customer.FirstName}} {{customer.LastName}}</h2>
   <div>
-    <div>FirstName: {{customer.FirstName}}</div>
-    <div>LastName: {{customer.LastName}}</div>
-  </div>
-  <div>
-    <div>Email: {{customer.Email}}</div>
-    <div>PhoneNumber: {{customer.PhoneNumber}}</div>
+    <h4>Email: {{customer.Email}}</h4>
+    <h4>PhoneNumber: {{customer.PhoneNumber}}</h4>
   </div>
 </div>
 <div *ngIf="!customer">

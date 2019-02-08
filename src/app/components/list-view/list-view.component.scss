@@ -1,3 +1,22 @@
 .marked{
     background-color: chartreuse;
 }
+.item{
+    overflow: hidden;
+}
+.row{
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-top: 1px black solid;
+    cursor: pointer;
+}
+.table-header{
+    font-size: 20px;
+    margin: 5px;
+}
+.list{
+    border: 1px black solid;
+}
+.header{
+    justify-content: center
+}

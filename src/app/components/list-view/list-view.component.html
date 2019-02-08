@@ -1,14 +1,16 @@
-<h3 mat-subheader>{{Header}}</h3>
-<div fxLayout="row">
-  <div *ngFor="let column of DisplayedColumns" fxFlex="16">
-    {{column}}
+<h1 mat-subheader class="header">{{Header}}</h1>
+<div class="list">
+  <div fxLayout="row" class="table-header">
+    <div *ngFor="let column of DisplayedColumns; index as i" fxFlex="{{ColumnSize[i]}}">
+      {{column}}
+    </div>
   </div>
-</div>
-<div fxLayout="column">
-  <div *ngFor="let item of Items" (click)="markItem(item)">
-    <div fxLayout="row" [ngClass]="{'marked': markedItem == item}">
-      <div fxFlex="columnSize" *ngFor="let key of Keys">
-        <div>{{format(item[key])}}</div>
+  <div fxLayout="column">
+    <div *ngFor="let item of Items; index as i" (click)="markItem(item)">
+      <div fxLayout="row" [ngClass]="{'marked': markedItem == item}" class="row">
+        <div fxFlex="{{ColumnSize[i]}}" *ngFor="let key of Keys" class="item">
+          <div>{{format(item[key])}}</div>
+        </div>
       </div>
     </div>
   </div>

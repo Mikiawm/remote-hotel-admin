@@ -15,8 +15,9 @@ export class CustomersModalComponent implements OnInit {
   constructor(public dialogRef: MatDialogRef<CustomersModalComponent>, private customerService: CustomerService) { }
   @ViewChild(ListViewComponent) listViewComponent: ListViewComponent<Customer>;
   customers: Customer[];
-  header = 'customer';
-  displayedColumn: string[] = ['FirstName', 'LastName', 'Email', 'PhoneNumber', 'CreatedDate'];
+  header = 'Customers list';
+  displayedColumn: string[] = ['FirstName', 'LastName', 'Email', 'PhoneNumber'];
+  columnSize: number[] = [20,20, 40, 20];
   markedCustomer: Customer;
 
   ngOnInit() {

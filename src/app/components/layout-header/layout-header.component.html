@@ -1,0 +1,8 @@
+<mat-toolbar color="warn" *ngIf="authService.isLoggedIn()">
+  <mat-toolbar-row>
+    <h1 mat-subheader>Remote hotel</h1>
+    <app-hotel-selector></app-hotel-selector>
+    <span class="spacer"></span>
+    <mat-icon class="logout" (click)="authService.logout()">exit_to_app</mat-icon>
+  </mat-toolbar-row>
+</mat-toolbar>

@@ -48,6 +48,8 @@ import { InitReservationComponent } from './components/dashboard/init-reservatio
 import { DatePipe } from '@angular/common';
 import { ClickedDayModalComponent } from './components/dashboard/reservarion-calendar/clicked-day-modal/clicked-day-modal.component';
 import { CalendarHeaderComponent } from './components/dashboard/reservarion-calendar/calendar-header/calendar-header.component';
+import { LayoutHeaderComponent } from './components/layout-header/layout-header.component';
+import { LayoutFooterComponent } from './components/layout-footer/layout-footer.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -71,7 +73,9 @@ import { CalendarHeaderComponent } from './components/dashboard/reservarion-cale
     ReservarionCalendarComponent,
     InitReservationComponent,
     ClickedDayModalComponent,
-    CalendarHeaderComponent
+    CalendarHeaderComponent,
+    LayoutHeaderComponent,
+    LayoutFooterComponent
   ],
   imports: [
     BrowserModule,

@@ -4,7 +4,7 @@ import * as moment from 'moment';
 import { Observable } from 'rxjs/internal/Observable';
 import { Subject } from 'rxjs/internal/Subject';
 import { BehaviorSubject } from 'rxjs/internal/BehaviorSubject';
-import { of } from 'rxjs/internal/observable/of';
+
 import { empty } from 'rxjs/internal/observable/empty';
 
 @Component({
@@ -16,9 +16,9 @@ export class ListViewComponent<T> implements OnInit {
   @Input() DisplayedColumns: string[];
   @Input() Items: T[];
   @Input() Header: string;
+  @Input() ColumnSize: number[];
   @Input() Keys: string[];
   @Output() marked = new EventEmitter<T>();
-  columnSize: number;
   markedItem?: T;
 
 
@@ -26,7 +26,6 @@ export class ListViewComponent<T> implements OnInit {
    }
 
   ngOnInit() {
-    this.columnSize = 100 / this.Keys.length;
   }
 
   markItem(item: T) {
