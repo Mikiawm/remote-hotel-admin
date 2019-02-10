@@ -14,36 +14,29 @@ export class AddEditRoomComponent implements OnInit {
 
   roomForm: FormGroup;
   constructor(private fb: FormBuilder, private roomService: RoomService,
-    @Inject(MAT_DIALOG_DATA) public data: Room, private hotelService: HotelService,
+    @Inject(MAT_DIALOG_DATA) public data: Room,
     public dialogRef: MatDialogRef<AddEditRoomComponent>) { }
 
   ngOnInit() {
     this.roomForm = this.fb.group({
-      roomNumber: new FormControl('', Validators.required),
-      roomBeds: new FormControl('', Validators.required),
-      roomStandard: new FormControl('', Validators.required),
-      doubleBeds: new FormControl('', Validators.required)
+      RoomId: new FormControl(null),
+      RoomNumber: new FormControl('', Validators.required),
+      Beds: new FormControl('', Validators.required),
+      Standard: new FormControl('', Validators.required),
+      DoubleBeds: new FormControl('', Validators.required)
     });
-    this.onChanges();
-  }
-  onChanges(): void {
-    this.roomForm.valueChanges.subscribe(val => {
-      console.log(val);
-    });
+
+    this.roomForm.patchValue(this.data);
+
   }
   addRoom() {
-    const room: Room = {
-      RoomNumber: this.roomForm.get('roomNumber').value,
-      Standard: this.roomForm.get('roomStandard').value,
-      Beds: this.roomForm.get('roomBeds').value,
-      DoubleBeds: this.roomForm.get('doubleBeds').value,
-      HotelId: this.hotelService.getActualHotelId()
-    };
-    console.log(room);
-    this.roomService.add(room).subscribe(val => {
-      console.log(val);
-    });
+    const room: Room = this.roomForm.value;
+    room.HotelId = 1;
+    if (room.RoomId == null) {
+      this.roomService.add(room).subscribe();
+    } else {
+      this.roomService.update(room).subscribe();
+    }
     this.dialogRef.close();
   }
-
 }

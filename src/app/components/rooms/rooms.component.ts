@@ -17,7 +17,6 @@ export class RoomsComponent implements OnInit {
   displayedColumn: string[] = ['RoomNumber', 'Standard', 'Beds', 'DoubleBeds', 'SingleBeds'];
 
   constructor(private roomService: RoomService, public dialog: MatDialog) {
-    this.getRooms().subscribe();
   }
 
   ngOnInit() {
@@ -28,12 +27,12 @@ export class RoomsComponent implements OnInit {
     return this.roomService.getAll().pipe(
       map(res => {
         this.rooms = res;
-        console.log(res);
         return res;
       })
     );
   }
   openAddEditRoomDialog(room?: Room) {
+    console.log(room);
     const dialogRef = this.dialog.open(AddEditRoomComponent, {
       height: '400px',
       width: '600px',

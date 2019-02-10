@@ -1,33 +1,33 @@
-<div fxFlex="shrink" class="main" fxFlexFill>
-  <div fxLayout="row">
-    <div *ngFor="let column of displayedColumn" fxFlex="20">
-      {{column}}
-    </div>
+<h3 mat-subheader>Rooms</h3>
+
+<div fxLayout="row">
+  <div *ngFor="let column of displayedColumn" fxFlex="20">
+    {{column}}
   </div>
-  <div fxLayout="column">
-    <div>
-      <div *ngFor="let room of rooms" (click)="openAddEditRoomDialog(room)">
-        <div fxLayout="row">
-          <div fxFlex="20">
-            {{room.RoomNumber}}
-          </div>
-          <div fxFlex="20">
-            {{room.Beds}}
-          </div>
-          <div fxFlex="20">
-            {{room.DoubleBeds}}
-          </div>
-          <div fxFlex="20">
-            {{room.SingleBeds}}
-          </div>
-          <div fxFlex="20">
-            {{room.Standard}}
-          </div>
+</div>
+<div fxLayout="column">
+  <div>
+    <div *ngFor="let room of rooms">
+      <div fxLayout="row" (click)="openAddEditRoomDialog(room)">
+        <div fxFlex="20">
+          {{room.RoomNumber}}
+        </div>
+        <div fxFlex="20">
+          {{room.Beds}}
+        </div>
+        <div fxFlex="20">
+          {{room.DoubleBeds}}
+        </div>
+        <div fxFlex="20">
+          {{room.SingleBeds}}
+        </div>
+        <div fxFlex="20">
+          {{room.Standard}}
         </div>
       </div>
     </div>
-    <div>
-      <button (click)="openAddEditRoomDialog()">Add room</button>
-    </div>
+  </div>
+  <div>
+    <button (click)="openAddEditRoomDialog()">Add room</button>
   </div>
 </div>

@@ -37,13 +37,15 @@ export class DataService<T> {
         return this.httpClient.get<T>(this.urlAdress, this.httpOptions);
     }
     add(item: T): Observable<T> {
-        console.log(this.urlAdress);
+        console.log('add');
         return this.httpClient.post<T>(this.urlAdress, item, this.httpOptions);
     }
-    update(id: number, itemToUpdate: T): Observable<T> {
+    update(itemToUpdate: T): Observable<T> {
+        console.log('update');
         return this.httpClient.put<T>(this.urlAdress, itemToUpdate, this.httpOptions);
     }
     delete(id: number): Observable<T> {
+        console.log('delete');
         return this.httpClient.put<T>(this.urlAdress, id, this.httpOptions);
     }
 }
