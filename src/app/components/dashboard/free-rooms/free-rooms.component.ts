@@ -4,33 +4,36 @@ import { RoomService } from 'src/app/services/room.service';
 import { Room } from 'src/app/models/room';
 import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs/internal/Observable';
+import { MatTableDataSource } from '@angular/material';
 
 @Component({
   selector: 'app-free-rooms',
   templateUrl: './free-rooms.component.html',
   styleUrls: ['./free-rooms.component.scss']
 })
-export class FreeRoomsComponent implements DoCheck {
+export class FreeRoomsComponent {
   @Input() reservationForm: FormArray;
-  changeLog: string[] = [];
-
-  rooms: Room[];
   markedRoom?: Room;
-  displayedColumn: string[] = ['RoomNumber', 'Standard', 'Beds', 'DoubleBeds', 'SingleBeds'];
+  displayedColumns: string[] = ['RoomNumber', 'DoubleBeds', 'Beds', 'Standard'];
+  dataSource: MatTableDataSource<Room>;
+  rooms: Room[] = [];
 
   constructor(private roomService: RoomService) { }
 
-  ngDoCheck() {
-  }
   getFreeRooms(changes): Observable<Room[]> {
     return this.roomService.getFreeRooms(changes.dateFrom, changes.dateTo).pipe(
       map(res => {
         this.rooms = res;
+        this.dataSource = new MatTableDataSource(res);
         return res;
       })
     );
   }
   markRoom(room: Room) {
     this.markedRoom = room;
+  }
+
+  applyFilter(filterValue: string) {
+    this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 }

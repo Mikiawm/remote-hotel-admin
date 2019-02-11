@@ -1,30 +1,39 @@
-<h2>
-  Free rooms for this date range: 
-</h2>
-<div fxLayout="row">
-  <div *ngFor="let column of displayedColumn" fxFlex="20">
-    {{column}}
-  </div>
+<div fxFill *ngIf="rooms.length > 0">
+  <mat-form-field>
+    <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter room">
+  </mat-form-field>
+
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" fxFill>
+
+    <!-- Position Column -->
+    <ng-container matColumnDef="RoomNumber">
+      <th mat-header-cell *matHeaderCellDef> RoomNumber </th>
+      <td mat-cell *matCellDef="let element"> {{element.RoomNumber}} </td>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="DoubleBeds">
+      <th mat-header-cell *matHeaderCellDef> DoubleBeds </th>
+      <td mat-cell *matCellDef="let element"> {{element.DoubleBeds}} </td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="Beds">
+      <th mat-header-cell *matHeaderCellDef> Beds </th>
+      <td mat-cell *matCellDef="let element"> {{element.Beds}} </td>
+    </ng-container>
+
+    <!-- Weight Column -->
+    <ng-container matColumnDef="Standard">
+      <th mat-header-cell *matHeaderCellDef> Standard </th>
+      <td mat-cell *matCellDef="let element"> {{element.Standard}} </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="markRoom(row)"
+      [ngClass]="{'marked': markedRoom == row}"></tr>
+  </table>
 </div>
-<div fxLayout="column">
-  <div>
-    <div *ngFor="let room of rooms" [ngClass]="{'marked': markedRoom == room}" (click)="markRoom(room)">
-      <div fxLayout="row">
-        <div fxFlex="20">
-          {{room.RoomNumber}}
-        </div>
-        <div fxFlex="20">
-          {{room.Beds}}
-        </div>
-        <div fxFlex="20">
-          {{room.DoubleBeds}}
-        </div>
-        <div fxFlex="20">
-          {{room.SingleBeds}}
-        </div>
-        <div fxFlex="20">
-          {{room.Standard}}
-        </div>
-      </div>
-    </div>
-  </div>
+<div *ngIf="rooms.length == 0" fxFill>
+  <h3>No rooms for this filter</h3>
+</div>
