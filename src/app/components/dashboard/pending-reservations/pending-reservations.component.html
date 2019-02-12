@@ -1,0 +1,49 @@
+
+<table mat-table [dataSource]="dataSource" fxFill>
+
+  <!-- Checkbox Column -->
+  <ng-container matColumnDef="Select">
+    <th mat-header-cell *matHeaderCellDef>
+      <mat-checkbox (change)="$event ? masterToggle() : null"
+                    [checked]="selection.hasValue() && isAllSelected()"
+                    [indeterminate]="selection.hasValue() && !isAllSelected()">
+      </mat-checkbox>
+    </th>
+    <td mat-cell *matCellDef="let row">
+      <mat-checkbox (click)="$event.stopPropagation()"
+                    (change)="$event ? selection.toggle(row) : null"
+                    [checked]="selection.isSelected(row)">
+      </mat-checkbox>
+    </td>
+  </ng-container>
+
+  <!-- Position Column -->
+  <ng-container matColumnDef="RoomNumber">
+    <th mat-header-cell *matHeaderCellDef> RoomNumber </th>
+    <td mat-cell *matCellDef="let element"> {{element.RoomNumber}} </td>
+  </ng-container>
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="Customer">
+    <th mat-header-cell *matHeaderCellDef> Customer </th>
+    <td mat-cell *matCellDef="let element"> {{element.Customer}} </td>
+  </ng-container>
+
+  <!-- Weight Column -->
+  <ng-container matColumnDef="DateFrom">
+    <th mat-header-cell *matHeaderCellDef> DateFrom </th>
+    <td mat-cell *matCellDef="let element"> {{element.DateFrom | date: 'short'}} </td>
+  </ng-container>
+
+  <!-- Symbol Column -->
+  <ng-container matColumnDef="DateTo">
+    <th mat-header-cell *matHeaderCellDef> DateTo </th>
+    <td mat-cell *matCellDef="let element"> {{element.DateTo | date: 'short'}} </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"
+      (click)="selection.toggle(row)">
+  </tr>
+</table>
+<button mat-raised-button color="primary" (click)="acceptReservations()" [disabled]="selection.selected.length == 0">Accept reservations</button>

@@ -1,0 +1,28 @@
+<div fxLayout="column">
+  <h2 fxFlex="100" fxLayoutAlign="center center">
+    Accept this reservations?
+  </h2>
+  <div *ngFor="let reservation of data.selected" fxLayout="column">
+    <div fxLayout="column">
+      <h2 fxFlex fxLayoutAlign="center center">
+        Room number: {{reservation.RoomNumber}}
+      </h2>
+      <div fxLayoutAlign="center">
+        <div fxFlex="40">
+          Date From: {{reservation.DateFrom | date: 'short'}}
+        </div>
+        <div fxFlex="40">
+          Date to: {{reservation.DateTo | date: 'short'}}
+        </div>
+      </div>
+      <div fxFill fxLayoutAlign="center">
+        Crated date: {{reservation.CreatedDate | date: 'short'}}
+      </div>
+    </div>
+  </div>
+  <div fxLayout="row">
+    <button mat-raised-button fxFlex="20" color="primary" (click)="close()">Yes</button>
+    <div fxFlex="60"></div>
+    <button mat-raised-button color="warn" fxFlex="20" (click)="close()">No</button>
+  </div>
+</div>

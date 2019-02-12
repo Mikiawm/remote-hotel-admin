@@ -50,6 +50,9 @@ import { ClickedDayModalComponent } from './components/dashboard/reservarion-cal
 import { CalendarHeaderComponent } from './components/dashboard/reservarion-calendar/calendar-header/calendar-header.component';
 import { LayoutHeaderComponent } from './components/layout-header/layout-header.component';
 import { LayoutFooterComponent } from './components/layout-footer/layout-footer.component';
+import { PendingReservationsComponent } from './components/dashboard/pending-reservations/pending-reservations.component';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { AcceptReservationDialogComponent } from './components/dashboard/pending-reservations/accept-reservation-dialog/accept-reservation-dialog.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -75,7 +78,9 @@ import { LayoutFooterComponent } from './components/layout-footer/layout-footer.
     ClickedDayModalComponent,
     CalendarHeaderComponent,
     LayoutHeaderComponent,
-    LayoutFooterComponent
+    LayoutFooterComponent,
+    PendingReservationsComponent,
+    AcceptReservationDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -103,13 +108,15 @@ import { LayoutFooterComponent } from './components/layout-footer/layout-footer.
     MatSelectModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    MatCheckboxModule,
     CalendarModule.forRoot({
       provide: DateAdapter,
       useFactory: adapterFactory
     })
   ],
   entryComponents: [AddEditRoomComponent, CreateReservationComponent, AddCustomerComponent, CustomersModalComponent,
-    InitReservationComponent, ClickedDayModalComponent, AccessLogsComponent],
+    InitReservationComponent, ClickedDayModalComponent, AccessLogsComponent,
+    PendingReservationsComponent, AcceptReservationDialogComponent],
   providers: [UsersService, { provide: MAT_DIALOG_DATA, useValue: {} },
     ReservationService, RoomService, MatDatepickerModule, HotelService, AccessLogService, AuthGuard, DatePipe],
   bootstrap: [AppComponent]
